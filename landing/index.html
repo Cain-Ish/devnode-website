@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mariusz Machuta — Freelance Senior Frontend Developer, Warsaw/EU</title>
+    <meta
+      name="description"
+      content="Freelance senior frontend developer &amp; WCAG 2.2 accessibility consultant in Warsaw, remote across the EU. Design systems, frontend leadership, AI delivery."
+    />
+    <!-- TEMPORARY: remove once every [PLACEHOLDER] is resolved (see docs/CONTENT-PLACEHOLDERS.md) -->
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://mariuszmachuta.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mariuszmachuta.com/" />
+    <meta property="og:title" content="Mariusz Machuta — Senior Frontend Developer" />
+    <meta
+      property="og:description"
+      content="Accessibility, design systems and frontend leadership for product teams. The page itself is the portfolio: 0 trackers, works without JS, Lighthouse 100s."
+    />
+    <meta property="og:image" content="https://mariuszmachuta.com/og/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DevNode — Mariusz Machuta, Senior Frontend Developer. Accessibility, design systems, frontend leadership." />
+    <meta property="og:site_name" content="DevNode — Mariusz Machuta" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mariusz Machuta — Senior Frontend Developer" />
+    <meta name="twitter:description" content="Accessibility, design systems and frontend leadership for product teams. Zero trackers, works without JS, Lighthouse 100s." />
+    <meta name="twitter:image" content="https://mariuszmachuta.com/og/og-image.png" />
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f5f3" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a12" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="preload" href="/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script type="module" src="/src/main.ts"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://mariuszmachuta.com/#person",
+            "name": "Mariusz Machuta",
+            "jobTitle": "Senior Frontend Developer",
+            "url": "https://mariuszmachuta.com/",
+            "email": "mailto:mariusz.machuta@gmail.com",
+            "address": { "@type": "PostalAddress", "addressLocality": "Warsaw", "addressCountry": "PL" },
+            "sameAs": ["https://github.com/Cain-Ish", "https://www.linkedin.com/in/cainish/"],
+            "worksFor": { "@id": "https://mariuszmachuta.com/#business" },
+            "image": "https://mariuszmachuta.com/og/og-image.png",
+            "knowsAbout": [
+              "Web accessibility (WCAG 2.2)",
+              "Design systems",
+              "Frontend architecture",
+              "TypeScript",
+              "AI-assisted software delivery"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://mariuszmachuta.com/#business",
+            "name": "DevNode — Mariusz Machuta",
+            "founder": { "@id": "https://mariuszmachuta.com/#person" },
+            "url": "https://mariuszmachuta.com/",
+            "email": "mailto:mariusz.machuta@gmail.com",
+            "areaServed": ["Poland", "European Union", "Remote"],
+            "knowsLanguage": ["en", "pl"],
+            "image": "https://mariuszmachuta.com/og/og-image.png",
+            "priceRange": "$$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Warsaw", "addressCountry": "PL" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://mariuszmachuta.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How does contracting work, formally?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "B2B contract with my Polish sole proprietorship (CEIDG-registered). For EU companies, invoicing uses reverse-charge VAT. NDA and IP-transfer clauses are standard practice."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Remote or on-site?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Remote-first from Warsaw (CET), overlapping comfortably with EU business hours. On-site kickoffs and workshops by arrangement."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you join existing teams or work solo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Both. Embedded senior/lead in your squad, or independent delivery of a scoped workstream with regular demos — whichever your roadmap needs."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you make us EAA / WCAG compliant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes — audit first (prioritized findings with severity and effort), then remediation in your codebase together with your team, so compliance sticks after I leave."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="glass-nav sticky top-0 z-50">
+      <div class="wrap flex items-center justify-between py-3">
+        <a href="/" class="font-mono text-[1.05rem] font-bold" aria-label="DevNode — home">
+          <span class="text-accent" aria-hidden="true">&lt;</span>DevNode<span class="text-accent" aria-hidden="true">&nbsp;/&gt;</span>
+        </a>
+        <nav aria-label="Primary" class="flex items-center gap-6">
+          <ul class="hidden items-center gap-6 text-[0.95rem] font-medium md:flex">
+            <li><a class="hover:text-accent" href="#services">Services</a></li>
+            <li><a class="hover:text-accent" href="#proof">Proof</a></li>
+            <li><a class="hover:text-accent" href="#about">About</a></li>
+            <li><a class="hover:text-accent" href="#process">Process</a></li>
+            <li><a class="hover:text-accent" href="#faq">FAQ</a></li>
+          </ul>
+          <a href="#contact" class="btn btn-primary !min-h-0 !py-2 text-sm">Hire me</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ============================== HERO ============================== -->
+      <section aria-labelledby="hero-title" class="wrap pb-24 pt-16 md:pt-24">
+        <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p class="font-mono text-sm text-muted">
+              <span aria-hidden="true">//</span> Warsaw · remote · B2B contract
+            </p>
+            <h1 id="hero-title" class="mt-5 max-w-[20ch] text-[clamp(2.6rem,6.5vw,4.6rem)] font-bold">
+              <span class="whitespace-nowrap">Unicorn-level</span> frontend developer, <span class="grad-text">accessible to everyone</span>.
+            </h1>
+            <p class="mt-6 max-w-[54ch] text-lg text-muted">
+              I'm Mariusz Machuta — a senior frontend developer and WCAG accessibility consultant
+              who helps product teams ship interfaces that are fast, inclusive, and built to last.
+              Design systems that scale. Accessibility that survives an audit.
+            </p>
+            <div class="mt-9 flex flex-wrap items-center gap-4">
+              <a href="#contact" class="btn btn-primary">Book the intro call</a>
+              <a href="#proof" class="btn btn-ghost">See the proof</a>
+            </div>
+            <div class="mt-7 flex flex-wrap items-center gap-5">
+              <p class="pill">
+                <span class="pill-dot" aria-hidden="true"></span>
+                <span class="ph" title="Confirm availability">Available for new engagements — [PLACEHOLDER: from when]</span>
+              </p>
+              <a href="#about" class="font-mono text-sm text-muted underline decoration-dotted underline-offset-4 hover:text-accent">Why "unicorn"? ↓</a>
+            </div>
+          </div>
+
+          <figure class="term" aria-label="Real audit results for this page">
+            <div class="term-bar" aria-hidden="true">
+              <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+              <span class="c ml-3 text-xs">the-portfolio-is-the-page</span>
+            </div>
+            <div class="term-body" role="presentation">
+              <p><span class="p">$</span> npx lighthouse mariuszmachuta.com</p>
+              <p>&nbsp;&nbsp;performance&nbsp;&nbsp;&nbsp;&nbsp;<span class="ok">100</span> desktop · <span class="ok">99</span> mobile</p>
+              <p>&nbsp;&nbsp;accessibility&nbsp;&nbsp;<span class="ok">100</span></p>
+              <p>&nbsp;&nbsp;best-practices <span class="ok">100</span></p>
+              <p>&nbsp;&nbsp;seo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ok">100</span></p>
+              <p class="mt-2"><span class="p">$</span> npx axe mariuszmachuta.com</p>
+              <p>&nbsp;&nbsp;<span class="ok">0 violations</span> <span class="c">(WCAG 2.2 AA)</span></p>
+              <p class="mt-2"><span class="p">$</span> curl -w '%{size_download}' -sL mariuszmachuta.com</p>
+              <p>&nbsp;&nbsp;~125 KB gz · 0 trackers · 0 third-party requests</p>
+              <p class="mt-2"><span class="c"># works with JavaScript disabled.</span></p>
+              <p><span class="c"># view source — that's the résumé.</span> <span class="term-cursor" aria-hidden="true"></span></p>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ========================= CREDIBILITY ============================ -->
+      <section aria-labelledby="cred-title" class="wrap pb-6">
+        <h2 id="cred-title" class="sr-only">Highlights</h2>
+        <ul class="flex flex-wrap gap-x-3 gap-y-3 font-mono text-[0.85rem] text-muted">
+          <li class="rounded-full border border-line px-4 py-1.5"><span class="ph" title="Confirm years">[PLACEHOLDER: 10+]</span> years frontend</li>
+          <li class="rounded-full border border-line px-4 py-1.5">WCAG 2.2 specialist</li>
+          <li class="rounded-full border border-line px-4 py-1.5">design systems — token → adoption</li>
+          <li class="rounded-full border border-line px-4 py-1.5"><span class="ph" title="Confirm stack">[PLACEHOLDER: React · TypeScript · Next.js]</span></li>
+          <li class="rounded-full border border-line px-4 py-1.5">AI tooling built in public</li>
+          <li class="rounded-full border border-line px-4 py-1.5">civic tech — Koduj dla Polski</li>
+        </ul>
+      </section>
+
+      <!-- =========================== SERVICES ============================= -->
+      <section id="services" aria-labelledby="services-title" class="sec wrap py-20 md:py-28">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <p class="tag"><span aria-hidden="true">&lt;</span>services<span aria-hidden="true"> /&gt;</span></p>
+        <h2 id="services-title" class="mt-3 text-[clamp(1.9rem,4vw,2.8rem)] font-bold">What I do</h2>
+        <p class="mt-4 max-w-[58ch] text-muted">
+          Five things, done properly. If your problem isn't on this list, say so on the call.
+        </p>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+          <article class="card lg:col-span-4" data-reveal>
+            <p class="tag"><span aria-hidden="true">&lt;</span>accessibility<span aria-hidden="true"> /&gt;</span></p>
+            <h3 class="mt-3 text-2xl font-bold">Accessibility engineering</h3>
+            <p class="mt-2 max-w-[52ch] text-[0.97rem] text-muted">
+              WCAG 2.2 audits, remediation, and accessibility-first component builds. The European
+              Accessibility Act is in force — for most EU-facing products this is now a legal
+              requirement, not a nice-to-have.
+            </p>
+            <p class="mt-4 text-sm text-muted">
+              <strong class="text-ink">Good fit if:</strong> you sell into the EU and "we'll fix
+              accessibility later" has quietly become a liability.
+            </p>
+          </article>
+
+          <article class="card lg:col-span-2" data-reveal>
+            <p class="tag"><span aria-hidden="true">&lt;</span>design-systems<span aria-hidden="true"> /&gt;</span></p>
+            <h3 class="mt-3 text-xl font-bold">Design systems</h3>
+            <p class="mt-2 text-[0.95rem] text-muted">
+              One accessible, documented, tested source of truth — components teams actually adopt.
+              Tokens, docs, governance included.
+            </p>
+            <p class="mt-4 text-sm text-muted">
+              <strong class="text-ink">Good fit if:</strong> three squads ship three different buttons.
+            </p>
+          </article>
+
+          <article class="card lg:col-span-2" data-reveal>
+            <p class="tag"><span aria-hidden="true">&lt;</span>leadership<span aria-hidden="true"> /&gt;</span></p>
+            <h3 class="mt-3 text-xl font-bold">Frontend leadership</h3>
+            <p class="mt-2 text-[0.95rem] text-muted">
+              Architecture decisions, code-review culture, mentoring, interview support — a senior
+              pair of hands that levels up the ones you have.
+            </p>
+            <p class="mt-4 text-sm text-muted">
+              <strong class="text-ink">Good fit if:</strong> the team grows faster than its practices.
+            </p>
+          </article>
+
+          <article class="card lg:col-span-2" data-reveal>
+            <p class="tag"><span aria-hidden="true">&lt;</span>product<span aria-hidden="true"> /&gt;</span></p>
+            <h3 class="mt-3 text-xl font-bold">Product improvement</h3>
+            <p class="mt-2 text-[0.95rem] text-muted">
+              Performance budgets, UX polish, conversion friction — measured with real numbers on
+              the product you already have, not guessed.
+            </p>
+            <p class="mt-4 text-sm text-muted">
+              <strong class="text-ink">Good fit if:</strong> the product works but doesn't feel finished.
+            </p>
+          </article>
+
+          <article class="card lg:col-span-2" data-reveal>
+            <p class="tag"><span aria-hidden="true">&lt;</span>ai-delivery<span aria-hidden="true"> /&gt;</span></p>
+            <h3 class="mt-3 text-xl font-bold">AI-augmented delivery</h3>
+            <p class="mt-2 text-[0.95rem] text-muted">
+              I use AI tooling daily — and build agent tooling myself, in the open. Integrated into
+              your workflow with senior judgment in the loop.
+            </p>
+            <p class="mt-4 text-sm text-muted">
+              <strong class="text-ink">Good fit if:</strong> you want the AI story to be true, not a demo.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================= PROOF ============================== -->
+      <section id="proof" aria-labelledby="proof-title" class="sec border-y border-line bg-raised/40 py-20 md:py-28">
+        <div class="wrap">
+          <span class="sec-num" aria-hidden="true">02</span>
+          <p class="tag"><span aria-hidden="true">&lt;</span>proof<span aria-hidden="true"> /&gt;</span></p>
+          <h2 id="proof-title" class="mt-3 text-[clamp(1.9rem,4vw,2.8rem)] font-bold">
+            This page is the exhibit
+          </h2>
+          <p class="mt-4 max-w-[58ch] text-muted">
+            Claims are cheap. Open DevTools and run Lighthouse on this page right now — here's what
+            you should find:
+          </p>
+
+          <dl class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-5">
+            <div class="card !p-5" data-reveal>
+              <dt class="text-sm text-muted">Lighthouse</dt>
+              <dd class="stat-num">100 ×4</dd>
+              <dd class="text-xs text-muted">desktop · mobile ≥99 · measured 2026-07</dd>
+            </div>
+            <div class="card !p-5" data-reveal>
+              <dt class="text-sm text-muted">Conformance</dt>
+              <dd class="stat-num">WCAG 2.2</dd>
+              <dd class="text-xs text-muted">AA, with AAA body contrast</dd>
+            </div>
+            <div class="card !p-5" data-reveal>
+              <dt class="text-sm text-muted">Page weight</dt>
+              <dd class="stat-num">~125 KB</dd>
+              <dd class="text-xs text-muted">total transfer, fonts included</dd>
+            </div>
+            <div class="card !p-5" data-reveal>
+              <dt class="text-sm text-muted">Third-party</dt>
+              <dd class="stat-num">0</dd>
+              <dd class="text-xs text-muted">no CDNs, no trackers, no cookies</dd>
+            </div>
+            <div class="card !p-5" data-reveal>
+              <dt class="text-sm text-muted">JavaScript</dt>
+              <dd class="stat-num">optional</dd>
+              <dd class="text-xs text-muted">everything works with JS disabled</dd>
+            </div>
+          </dl>
+
+          <h3 class="mt-16 text-xl font-bold">Selected work</h3>
+          <div class="mt-6 grid gap-5 md:grid-cols-3">
+            <article class="card" data-reveal>
+              <p class="font-mono text-sm text-muted"><span class="ph">[PLACEHOLDER: industry, e.g. fintech scale-up]</span></p>
+              <h4 class="mt-2 font-bold"><span class="ph">[PLACEHOLDER: engagement, e.g. Design system lead]</span></h4>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                <span class="ph">[PLACEHOLDER: outcome with a number, e.g. "component library adopted by 4 squads; UI defect rate down 40%"]</span>
+              </p>
+            </article>
+            <article class="card" data-reveal>
+              <p class="font-mono text-sm text-muted"><span class="ph">[PLACEHOLDER: industry, e.g. e-commerce]</span></p>
+              <h4 class="mt-2 font-bold"><span class="ph">[PLACEHOLDER: engagement, e.g. Accessibility remediation]</span></h4>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                <span class="ph">[PLACEHOLDER: outcome, e.g. "WCAG 2.2 AA reached in 6 weeks; audit passed first try"]</span>
+              </p>
+            </article>
+            <article class="card" data-reveal>
+              <p class="font-mono text-sm text-muted">open source · public</p>
+              <h4 class="mt-2 font-bold">AI developer tooling, in the open</h4>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                I build AI-assisted developer tooling publicly (a knowledge-base plugin for Claude
+                Code, among others) and volunteer with Koduj dla Polski civic tech.
+              </p>
+              <p class="mt-4 text-sm">
+                <a class="font-medium text-accent underline underline-offset-4" href="https://github.com/Cain-Ish" rel="me">github.com/Cain-Ish</a>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================= TESTIMONIALS =========================== -->
+      <!-- Ships hidden until at least one real quote is available.           -->
+      <section id="testimonials" aria-labelledby="testimonials-title" class="wrap py-20 md:py-28" hidden>
+        <p class="tag"><span aria-hidden="true">&lt;</span>testimonials<span aria-hidden="true"> /&gt;</span></p>
+        <h2 id="testimonials-title" class="mt-3 text-[clamp(1.9rem,4vw,2.8rem)] font-bold">What clients say</h2>
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          <blockquote class="card">
+            <p>"[PLACEHOLDER: quote]"</p>
+            <footer class="mt-4 text-sm text-muted">— [PLACEHOLDER: name, role — or "Engineering Manager, e-commerce"]</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ============================= ABOUT ============================== -->
+      <section id="about" aria-labelledby="about-title" class="sec wrap py-20 md:py-28">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <p class="tag"><span aria-hidden="true">&lt;</span>about<span aria-hidden="true"> /&gt;</span></p>
+        <h2 id="about-title" class="mt-3 text-[clamp(1.9rem,4vw,2.8rem)] font-bold">
+          The person behind the unicorn
+        </h2>
+        <div class="mt-6 max-w-[62ch] space-y-5 text-muted">
+          <p>
+            The "unicorn" label started as a joke on my old link page — the rare frontend person
+            who's equally at home in component APIs, accessibility trees, and roadmap meetings. It
+            stuck, because that mix is exactly what I offer.
+          </p>
+          <p>
+            I've spent <span class="ph" title="Confirm years">[PLACEHOLDER: 10+]</span> years building for
+            the web, the recent ones as a senior. Accessibility became my specialty the first time I
+            watched a screen-reader user get stuck on a form I could have fixed in an afternoon.
+            Since then, WCAG isn't a checklist to me — it's simply what professional frontend looks
+            like.
+          </p>
+          <p>
+            I run my practice as a Polish sole proprietorship —
+            <span class="font-mono text-ink">&lt;DevNode&gt;</span> — which means you get a senior
+            engineer with zero hiring overhead: B2B invoice, NDA-friendly, async-first from Warsaw
+            (CET), comfortable embedded in your team or leading a workstream solo.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================ PROCESS ============================= -->
+      <section id="process" aria-labelledby="process-title" class="sec border-y border-line bg-raised/40 py-20 md:py-28">
+        <div class="wrap">
+          <span class="sec-num" aria-hidden="true">04</span>
+          <p class="tag"><span aria-hidden="true">&lt;</span>process<span aria-hidden="true"> /&gt;</span></p>
+          <h2 id="process-title" class="mt-3 text-[clamp(1.9rem,4vw,2.8rem)] font-bold">Working together</h2>
+          <ol class="steps mt-10 grid gap-5 md:grid-cols-4">
+            <li class="card" data-reveal>
+              <p class="font-mono text-sm font-bold text-accent">01</p>
+              <h3 class="mt-2 font-bold">Intro call</h3>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                30 minutes, free. Your context, my honest read on fit. If I'm not the right person,
+                I'll say so — and point you somewhere better.
+              </p>
+            </li>
+            <li class="card" data-reveal>
+              <p class="font-mono text-sm font-bold text-accent">02</p>
+              <h3 class="mt-2 font-bold">Proposal &amp; scope</h3>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                A short written proposal: goals, deliverables, timeline, and engagement model
+                (<span class="ph">[PLACEHOLDER: fixed-scope or time-and-materials]</span>).
+              </p>
+            </li>
+            <li class="card" data-reveal>
+              <p class="font-mono text-sm font-bold text-accent">03</p>
+              <h3 class="mt-2 font-bold">Delivery</h3>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                Sprint rhythm with a demo every
+                <span class="ph">[PLACEHOLDER: week / two weeks]</span>. You see working software,
+                not status reports.
+              </p>
+            </li>
+            <li class="card" data-reveal>
+              <p class="font-mono text-sm font-bold text-accent">04</p>
+              <h3 class="mt-2 font-bold">Handoff</h3>
+              <p class="mt-2 text-[0.95rem] text-muted">
+                Documentation, knowledge transfer, optional support retainer. Success is your team
+                not needing me — until the next big thing.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============================== FAQ =============================== -->
+      <section id="faq" aria-labelledby="faq-title" class="sec wrap py-20 md:py-28">
+        <span class="sec-num" aria-hidden="true">05</span>
+        <p class="tag"><span aria-hidden="true">&lt;</span>faq<span aria-hidden="true"> /&gt;</span></p>
+        <h2 id="faq-title" class="mt-3 text-[clamp(1.9rem,4vw,2.8rem)] font-bold">Questions clients ask</h2>
+
+        <div class="mt-8 max-w-[70ch]">
+          <details class="faq">
+            <summary>How does contracting work, formally?</summary>
+            <div>
+              B2B contract with my Polish sole proprietorship (CEIDG-registered). For EU companies,
+              invoicing uses reverse-charge VAT. NDA and IP-transfer clauses are standard practice.
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Remote or on-site?</summary>
+            <div>
+              Remote-first from Warsaw (CET), overlapping comfortably with EU business hours
+              <span class="ph">[PLACEHOLDER: and N hours of US East]</span>. On-site kickoffs and
+              workshops by arrangement.
+            </div>
+          </details>
+          <details class="faq">
+            <summary>When can you start?</summary>
+            <div><span class="ph">[PLACEHOLDER: current availability and notice period]</span></div>
+          </details>
+          <details class="faq">
+            <summary>What are your rates?</summary>
+            <div>
+              <span class="ph">[PLACEHOLDER: day-rate range, or "shared in the proposal after the intro call"]</span>
+              No surprises: the number in the proposal is the number on the invoice.
+            </div>
+          </details>
+          <details class="faq">
+            <summary>What happens if you're unavailable mid-project?</summary>
+            <div>
+              <span class="ph">[PLACEHOLDER: continuity plan — e.g. handoff notes updated every sprint, vetted senior network, defined notice period]</span>
+              You're never more than a sprint away from a clean handoff.
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Do you join existing teams or work solo?</summary>
+            <div>
+              Both. Embedded senior/lead in your squad, or independent delivery of a scoped
+              workstream with regular demos — whichever your roadmap needs.
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Can you make us EAA / WCAG compliant?</summary>
+            <div>
+              Yes — audit first (prioritized findings with severity and effort), then remediation in
+              your codebase together with your team, so compliance sticks after I leave.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ============================ CONTACT ============================= -->
+      <section id="contact" aria-labelledby="contact-title" class="border-t border-line bg-raised/40 py-20 md:py-28">
+        <div class="wrap">
+          <p class="tag"><span aria-hidden="true">&lt;</span>contact<span aria-hidden="true"> /&gt;</span></p>
+          <h2 id="contact-title" class="mt-3 max-w-[24ch] text-[clamp(2rem,4.5vw,3.2rem)] font-bold">
+            Let's build something <span class="grad-text">everyone can use</span>.
+          </h2>
+          <p class="mt-4 max-w-[52ch] text-muted">
+            Tell me about your product and where frontend hurts. I reply within
+            <span class="ph">[PLACEHOLDER: 24 hours]</span> on business days (CET).
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="mailto:mariusz.machuta@gmail.com" class="btn btn-primary font-mono text-base">
+              mariusz.machuta@gmail.com
+            </a>
+            <a href="#contact" class="btn btn-ghost"><span class="ph" title="Add scheduling link">[PLACEHOLDER: Book the 30-min intro call — calendar link]</span></a>
+            <button type="button" class="btn btn-ghost" data-copy-email="mariusz.machuta@gmail.com" hidden>
+              Copy email
+            </button>
+            <span data-copy-status role="status" class="text-sm text-muted"></span>
+          </div>
+
+          <ul class="mt-8 flex gap-6 text-[0.95rem]">
+            <li>
+              <a class="font-medium text-accent underline underline-offset-4" href="https://www.linkedin.com/in/cainish/" rel="me">LinkedIn</a>
+            </li>
+            <li>
+              <a class="font-medium text-accent underline underline-offset-4" href="https://github.com/Cain-Ish" rel="me">GitHub</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-line py-10">
+      <div class="wrap space-y-3 text-sm text-muted">
+        <p>
+          Mariusz Machuta — sole proprietorship registered in Poland (CEIDG) · NIP:
+          <span class="ph">[PLACEHOLDER: NIP]</span> · Warsaw, Poland ·
+          <span class="font-mono">&lt;DevNode&gt;</span>
+          <span class="ph">[PLACEHOLDER: confirm this is the registered trading name on the CEIDG entry]</span>
+        </p>
+        <p>No cookies, no trackers, no analytics — just HTML.</p>
+        <p>
+          This site aims for WCAG 2.2 AA+. Spotted an accessibility issue?
+          <a class="text-accent underline underline-offset-4" href="mailto:mariusz.machuta@gmail.com">Email me</a>
+          — I'll fix it.
+        </p>
+        <p>© 2026 Mariusz Machuta</p>
+      </div>
+    </footer>
+  </body>
+</html>
