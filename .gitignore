@@ -1,15 +1,10 @@
-/assets/favicon/icons
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-docker-compose.override.yml
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-_ide_*
+node_modules/
+dist/
+*.local
+
+# The CV carries a phone number and full employment history. It is uploaded to
+# the host at /cv/mariusz-machuta-cv.pdf; the page only needs that path.
+public/cv/
+
+# Design reference bundle from Claude Design — kept locally, never committed.
+design_handoff_devnode_landing/

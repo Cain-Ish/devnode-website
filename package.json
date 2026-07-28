@@ -1,24 +1,20 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.2.1",
-        "alpinejs": "^2.7.3",
-        "autoprefixer": "^10.1.0",
-        "axios": "^1.6",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.4.31",
-        "postcss-import": "^12.0.1",
-        "tailwindcss": "^2.0.2",
-        "webpack": "5.76.0"
-    }
+  "name": "devnode-website",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint:html": "html-validate dist/index.html",
+    "icons": "node scripts/gen-icons.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.12.1",
+    "html-validate": "^11.0.0",
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.3",
+    "vite": "^7.0.0"
+  }
 }
