@@ -1,26 +1,47 @@
 # mariuszmachuta.com
 
-Single-page static site for `<DevNode /> Unicorn Division` — the sole
-proprietorship of Mariusz Machuta, lead frontend developer, Warsaw.
+Single-page site for `<DevNode /> Unicorn Division` — Mariusz Machuta, lead
+frontend developer, Warsaw.
 
-**Vite 7 + hand-written CSS. No framework, no Tailwind, no TypeScript, and no
-JavaScript at all** — the built page ships exactly one `<script>` tag, and it
-holds JSON-LD. That is deliberate: the page claims zero cookies, zero trackers
-and self-hosted fonts, and a reviewer is expected to open DevTools and check.
+Vite 7 and hand-written CSS. No framework, no CSS library, no TypeScript, and
+one small script. The page claims zero cookies, zero trackers and self-hosted
+fonts, and a reader is expected to open DevTools and check — so the build stays
+dependency-free on purpose.
 
-The LinkStack install that used to live here was removed in full; it remains in
-git history.
+## Three views, one URL
+
+The page serves three audiences from a single document, switched by a control in
+the header:
+
+| View | For | Character |
+|---|---|---|
+| `client` *(default)* | Businesses, hiring managers, agencies | Outcome-led. The full page. |
+| `dev` | Tech leads running the technical screen | Peer-to-peer. Stack rated honestly, decisions with reasoning, opinions, two real failures. |
+| `recruiter` | Recruiters and sourcers | Built for a 30-second scan. Facts, keywords, numbers, CV. |
+
+All three render in the HTML; the two inactive ones carry `hidden`.
+`src/main.js` toggles that attribute and moves focus to the incoming view's
+`h1`.
+
+Two constraints hold this together, and both are deliberate:
+
+- **Switching never touches the URL** — no hash, no query parameter, no
+  `pushState`, no reload. It is local UI state.
+- **The `client` view works with JavaScript disabled.** Nothing is gated behind
+  a script; with JS off the default view renders complete and the switcher is
+  hidden via a stylesheet loaded from `<noscript>`.
 
 ## Layout
 
 ```
-index.html            the entire page
-src/styles/main.css   design tokens, components, breakpoints
+index.html            the entire page, all three views
+src/main.js           the audience switcher — the only JavaScript
+src/styles/main.css   tokens, components, breakpoints, print
 public/               copied verbatim into dist/
   fonts/              self-hosted woff2 (Inter Variable, JetBrains Mono 400/700)
   cv/                 the CV PDF — gitignored, see below
-  og/og-image.png     1200×630 social card
-  .htaccess           deploy config: canonical, CSP, security headers, caching
+  noscript.css        hides the switcher when scripting is off
+  .htaccess           canonical redirects, CSP, security headers, caching
 scripts/gen-icons.mjs regenerates the favicon set from public/favicon.svg
 ```
 
@@ -34,151 +55,109 @@ npm run preview    # serve the production build
 npm run icons      # regenerate favicons after editing public/favicon.svg
 ```
 
-## The CV is not in git
+## The CV is not in this repo
 
 `public/cv/mariusz-machuta-cv.pdf` is gitignored — it carries a phone number and
-a full employment history, and this repo is public. The page links to
-`/cv/mariusz-machuta-cv.pdf` in three places; **upload the PDF to that path on
-the host**, or the links 404.
+a full employment history. The page links to `/cv/mariusz-machuta-cv.pdf` from
+five places; **upload the PDF to that path on the host**, or those links 404.
 
-Keep a local copy at `public/cv/mariusz-machuta-cv.pdf` so `npm run build`
-produces a complete `dist/`.
+Keep a local copy at `public/cv/` so `npm run build` produces a complete `dist/`.
 
-## Verification gates
+## Verification
 
-All must pass before deploy.
+Every gate below must pass, **against each of the three views**, before deploy.
 
 ```bash
-npm run build                                 # 0 errors
-npx html-validate dist/index.html             # 0 errors
-npx serve dist -l 4174                        # then, in another shell:
+npm run build                                  # 0 errors
+npx html-validate dist/index.html              # 0 errors
+npx serve dist -l 4174
 npx lighthouse http://localhost:4174 --preset=desktop --quiet   # ≥95 all
 npx lighthouse http://localhost:4174 --quiet                    # mobile ≥95 all
 ```
 
-> Audit against `npx serve dist`, **not** `vite preview` — local dev extensions
-> inject scripts into Vite responses and corrupt the charset and bf-cache
-> audits.
+> Audit against `npx serve dist`, **not** `vite preview` — local browser
+> extensions inject scripts into Vite responses and corrupt the charset and
+> bf-cache audits.
 
 **axe-core:** copy `node_modules/axe-core/axe.min.js` into `dist/`, inject it in
-the DevTools console, run `axe.run()` — expect 0 violations. Decorative glyphs
-(`▸ ⋯ / ·`) report as *incomplete* on colour-contrast because they hold no text;
-that is correct, not a finding. Delete the copy afterwards.
+the console, run `axe.run()` — expect 0 violations in every view. Decorative
+glyphs (`▸ ⋯ / · ×`) report as *incomplete* on colour-contrast because they hold
+no text; that is correct, not a finding. Delete the copy afterwards.
 
-**Manual:** keyboard pass (skip link must be the first focusable element), 320px
-reflow with no horizontal scroll, `prefers-reduced-motion: reduce` (the hero
-caret must stop blinking), print preview (must be ink-on-paper, not blank), and
-confirm the four claims in the hero panel still hold of the built output.
+**Manual:** keyboard pass (the skip link must be the first focusable element);
+switcher buttons operable with Enter and Space; the URL unchanged after
+switching; one `h1` and no skipped heading levels within each view; 320px reflow
+with no horizontal scroll; `prefers-reduced-motion: reduce`; print preview
+(ink-on-paper, not blank); and confirm the four claims in the hero panel still
+hold of the built output.
 
-### Two lint rules are deliberately relaxed — do not "fix" them
+Current: **100 / 100 / 100 / 100** desktop on all three views, mobile 100 for
+`client` and 99 performance for `dev` and `recruiter`. axe 0 violations. All
+requests same-origin.
 
-`.htmlvalidate.json` turns off `no-redundant-role` and excludes `list` from
-`prefer-native-element`. Both exist so the eight `ul`/`ol` elements can carry
-`role="list"`.
+### Two lint rules are relaxed on purpose
 
-That role is **not** redundant in practice: Safari/VoiceOver silently drop
-`list`/`listitem` semantics when `list-style: none` is applied, which this
-design requires everywhere. Without the role, a VoiceOver user hears no "list,
-N items" for the verify panel, the delivered-for roster, every work card's
-outcomes, the career timeline or the process steps. Re-enabling the rules and
-stripping the roles trades a real accessibility regression for a cosmetically
-cleaner lint run — on this page especially, that is the wrong trade.
+`.htmlvalidate.json` disables `no-redundant-role` and excludes `list` from
+`prefer-native-element` so the `ul`/`ol` elements can carry `role="list"`.
 
-Evidence it is doing work: axe-core passing checks go from 36 to **40** with the
-roles present.
+That role is not redundant in practice: Safari and VoiceOver drop list semantics
+when `list-style: none` is applied, which this design requires throughout.
+Without it a VoiceOver user hears no "list, N items" anywhere on the page.
+Re-enabling the rules and stripping the roles trades a real accessibility
+regression for a tidier lint run. Evidence it does work: axe passing checks rise
+from 36 to 40 with the roles present.
 
-Last measured 2026-07-28: **100 / 100 / 100 / 100 desktop and mobile**, axe 0
-violations, 7 requests, all same-origin.
+## Editing the page
 
-## Content rules — do not "improve" these
+Copy and layout come from a design handoff kept outside this repo. A few
+constraints are load-bearing rather than stylistic:
 
-Deliberate client decisions, not oversights:
+- **No employment dates and no years-of-experience figure appear anywhere.** The
+  CV carries them, and the page says so explicitly. Durations tied to a specific
+  engagement are fine; a career total is not.
+- **No testimonials, no availability badge, no rates, no response-time SLA, no
+  phone number.**
+- **Only claims a reader can verify.** No Lighthouse scores or page-weight
+  figures about this page.
+- **Two ownership claims stay in the first person** — building and shipping an
+  MCP server, and building the axe-core accessibility gate in CI. "Built" is the
+  point; do not soften either to "worked with" or "experience in".
+- The dev view separates what the author owns from what he only works alongside.
+  **Never merge the "Around me, not mine" list into the claimed-skill columns** —
+  the dashed styling and the disclaimer are the honesty mechanism.
+- The `STRONG` / `MEDIUM` / `LOOSE` chips are 11px with `.06em` tracking. Do not
+  reduce the size; it was smaller once and that was wrong on a page selling
+  accessibility.
 
-1. **No years of experience and no employment dates anywhere on the page.** The
-   CV carries them; the career section says so explicitly and that line stays.
-2. No testimonials — references are taken by phone.
-3. No availability badge, no "available now" status. It goes stale.
-4. No rates, no pricing, no day-rate range.
-5. Only claim what a reader can verify in DevTools. Lighthouse scores and
-   page-weight figures are deliberately **not** on the page. Re-add them only
-   after measuring the real deployed site.
-6. The contact copy promises a written answer but **no response-time SLA**.
-7. No phone number on the page. Two conversion goals only: open the CV, send an
-   email.
-8. **The AI engineering section (02) is a client-confirmed service line, not a
-   derivation from the CV.** `Profile.pdf` carries it as a single bullet under
-   the CodiLime role; building LLM tooling is now roughly half the work and must
-   be visible. Do not trim, merge or demote it — it sits above Selected Work on
-   purpose, because it is the rarest capability on the page. *Open item: the
-   CV's AI bullet should be strengthened so the two documents agree, since the
-   page links to the CV as its proof.*
-9. **Within that section, cards `/04` Evals & guardrails and `/05` Designing for
-   the failure are load-bearing — keep them and keep their length.** Evaluation
-   is the scarcest skill in agentic hiring and the dominant rejection pattern is
-   demo-ware sold as production; those two cards, the "not in notebooks"
-   credibility line, and the FAQ "Why should a frontend lead be the one building
-   your agents?" are the page's answer to both. The 250 KB-budget / 90%-hook-
-   coverage reference inside `/04` is a real CodiLime figure and is the evidence
-   for the eval claim — do not genericise it.
-10. **Two first-person ownership claims must keep their first-person framing.**
-    (a) He **built and shipped an MCP server** exposing a design system to
-    agents — stated in AI card `/03`, the manifest AI row, the dev view's agent
-    section, and the recruiter SPECIALISMS line. (b) He **built the axe-core
-    accessibility gate in CI** — stated in the Receipts/Numbers stat, capability
-    `03`, the CodiLime work card, and the EAA/WCAG FAQ. "Built" is the point:
-    many candidates *use* MCP servers and *audit* accessibility; very few have
-    shipped one or automated the other. Never soften to "worked with" or
-    "experience in".
-11. **The dev view's "Two things I got wrong" section is real and confirmed** —
-    both stories were recovered from the client's own git history and commit
-    messages. **Keep every figure exact** (4 GB, 19 MB/s, 4.5 GB, 4,543 MB →
-    365 MB, five days): they are the evidence, and rounding them weakens the
-    section more than shortening it would. **Do not reorder the two stories** —
-    testing leads because it sits inside his claimed expertise and shows depth
-    while admitting error; the infra story follows as a shorter beat, explicitly
-    framed as outside his lane, which is what justifies the dev view's "Around
-    me, not mine" block. **Do not cut the closing sentence that links the two.**
-    Redactions are already applied: no employer, product, repo, design-system or
-    ticket identifiers, and the datastore and orchestrator are deliberately
-    unnamed — do not reintroduce any of them.
+### Client confidentiality
 
-### Confidentiality — read before touching any client description
-
-The end client of the CodiLime engagement is **under NDA**: characterise, never
-name. Only these approved strings may be used, verbatim:
-
-- "platform for a US enterprise-security leader" (work-card role)
-- "one of the larger US enterprise cybersecurity vendors" (work-card body)
-- "a US cybersecurity leader" (career list)
-
-`enterprise cybersecurity` appears in the recruiter DOMAINS keywords so ATS
-searches still match. **Never** add the company name, internal repo names,
-internal service names, or the client's internal design-system name — not in
-copy, JSON-LD, comments, or commit messages. Do not add further identifying
-detail (region counts, tenancy model, product category); the current wording is
-the agreed ceiling. CodiLime itself is the intermediary employer and is named
-openly — it is not the NDA'd party.
-
-The design source of truth is the Claude Design handoff bundle
-(`design_handoff_devnode_landing/`, gitignored): its README is the spec, and the
-inline styles of `DevNode Landing.dc.html` are the exact values.
+One engagement's end client is under NDA. Client descriptions on the page are
+deliberately characterising rather than naming, and must stay that way. Do not
+add a company name, internal repository or service name, or any further
+identifying detail — in copy, structured data, comments, or commit messages.
 
 ## Deploy (Apache)
 
-LinkStack is fully retired. The docroot should contain this site and nothing
-else — if any Laravel directories are still on the server, delete them before
-deploying rather than relying on `.htaccess` to hide them.
-
-1. Empty the docroot of the old install.
-2. Upload the **contents** of `dist/` into it.
-3. Upload the CV to `/cv/mariusz-machuta-cv.pdf` (gitignored, see above).
-4. `.htaccess` sets `DirectoryIndex index.html`, forces HTTPS and non-www,
-   denies PHP / dot-files / backup extensions, collapses `/index.html` onto `/`,
-   and sets CSP plus security headers. There is **no catch-all redirect**:
-   unknown URLs return a genuine 404 rather than a soft-404 301 to the homepage.
-5. Once HTTPS is confirmed stable, uncomment the HSTS line.
-6. Verify live: `npx lighthouse https://mariuszmachuta.com`, a
+1. Upload the **contents** of `dist/` into the docroot.
+2. Upload the CV to `/cv/mariusz-machuta-cv.pdf`.
+3. `.htaccess` sets `DirectoryIndex index.html`, forces HTTPS and non-www,
+   denies PHP, dot-files and backup extensions, collapses `/index.html` onto `/`,
+   and sets CSP plus security headers. There is deliberately **no catch-all
+   redirect** — unknown URLs return a genuine 404 rather than a soft-404 301 to
+   the homepage.
+4. Once HTTPS is confirmed stable, uncomment the HSTS header.
+5. Verify live: `npx lighthouse https://mariuszmachuta.com`, a
    securityheaders.com scan, and a click-through from a phone.
 
-**Rollback:** keep the previous `dist/` upload. Restoring it is a re-upload;
-there is no application layer to revert.
+**Rollback:** keep the previous `dist/` upload — restoring it is a re-upload.
+There is no application layer to revert.
+
+## Accessibility
+
+The page sells accessibility work, so its own markup is part of the argument.
+Real landmarks, a skip link first in the DOM, `section[aria-labelledby]`
+throughout, real `<dl>` for term/value pairs with `<dt>` always preceding its
+`<dd>` in source order, no heading-level skips, decorative glyphs hidden from
+assistive technology, and a visible focus ring on everything focusable.
+
+Found a problem? [Open an issue](https://github.com/Cain-Ish/devnode-website/issues).
