@@ -1208,9 +1208,13 @@ html {
   gap: 14px;
   align-items: start;
 }
+/* 11px / .06em, not the 9.5px / .08em of earlier revisions — that was below a
+   defensible legibility floor on a page selling accessibility. The eased
+   tracking keeps MEDIUM inside the 64px column, so the grid is unchanged.
+   Do not reduce this again. */
 .grip {
-  font-size: 9.5px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   color: var(--accent);
   border: 1px solid var(--accent-line);
   border-radius: 4px;
