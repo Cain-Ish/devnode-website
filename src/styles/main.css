@@ -1,0 +1,1719 @@
+/* ==================================================================== */
+/* DevNode landing — mariuszmachuta.com                                  */
+/* Values transcribed from design_handoff_devnode_landing/.              */
+/* Dark-only by design: the handoff defines no light palette.            */
+/* ==================================================================== */
+
+/* -------------------------------------------------------------------- */
+/* Fonts — self-hosted latin subsets                                     */
+/* -------------------------------------------------------------------- */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+}
+/* Metric-matched fallback: holds layout while Inter loads (no CLS). */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+}
+
+/* -------------------------------------------------------------------- */
+/* Tokens                                                                */
+/* -------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  --surface: #0b0b0f;
+  --raised: #101018;
+  --sunken: #0d0d14;
+
+  --accent: #c9f24d;
+  --accent-hover: #dbff6b;
+  --accent-line: #333f1c;
+  --accent-wash: #0f1408;
+
+  --ink: #f5f3ee;
+  --ink-body: #e9e7e2;
+  --ink-soft: #c4c2ce;
+
+  /* Contrast floor: --muted-3 is 5.7:1 on --surface. Nothing may go darker. */
+  --muted: #a3a1b0;
+  --muted-2: #9694a3;
+  --muted-3: #8b8998;
+
+  --line-strong: #2c2c38;
+  --line: #1e1e26;
+  --line-subtle: #191922;
+
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --sans: "Inter Variable", "Inter Fallback", system-ui, sans-serif;
+}
+
+/* -------------------------------------------------------------------- */
+/* Reset — replaces Tailwind preflight                                   */
+/* -------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* -------------------------------------------------------------------- */
+/* Base                                                                  */
+/* -------------------------------------------------------------------- */
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink-body);
+  /* Mono is the default body face — it is what gives the page its
+     dossier character. Inter is opt-in, via .prose, for running text. */
+  font-family: var(--mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Sticky header must never obscure a focused element (WCAG 2.2 SC 2.4.11).
+   scroll-padding-top covers EVERY scroll-into-view, including the browser
+   scrolling a newly focused control into view while tabbing — those controls
+   have no id, so [id]{scroll-margin-top} alone would not help them. */
+/* 112px, not 80px — the header is two rows now (logo + audience switcher). */
+html {
+  scroll-padding-top: 112px;
+}
+[id] {
+  scroll-margin-top: 112px;
+}
+
+/* Running prose only: lead, capability bodies, work bodies, FAQ answers,
+   process steps, contact paragraph. Everything else stays mono. */
+.prose {
+  font-family: var(--sans);
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 100;
+  transform: translateY(-300%);
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: transform 0.15s ease-out;
+}
+.skip:focus {
+  transform: translateY(0);
+  color: var(--surface);
+}
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* -------------------------------------------------------------------- */
+/* Buttons & links                                                       */
+/* -------------------------------------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--surface);
+  padding: 16px 26px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: background-color 0.15s ease-out, translate 0.15s ease-out;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: var(--surface);
+  translate: 0 -1px;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-body);
+  padding: 16px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.link-text {
+  font-size: 13px;
+  color: var(--muted-2);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+}
+.link-text:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* -------------------------------------------------------------------- */
+/* Header                                                                */
+/* -------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgb(11 11 15 / 0.82);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 32px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* -------------------------------------------------------------------- */
+/* Audience switcher — second header row                                 */
+/* -------------------------------------------------------------------- */
+.vsw-row {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 11px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.vsw-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--muted-3);
+  flex: none;
+}
+.vsw-group {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--sunken);
+}
+.vsw-aside {
+  font-size: 11px;
+  color: var(--muted-3);
+  line-height: 1.5;
+}
+[data-vsw] {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: var(--muted-2);
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+[data-vsw]:hover {
+  color: var(--ink-body);
+  background: var(--line-subtle);
+}
+[data-vsw][data-active="true"] {
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 700;
+}
+[data-vsw][data-active="true"]:hover {
+  background: var(--accent-hover);
+  color: var(--surface);
+}
+
+/* Per-view nav groups. display:contents keeps the links as direct flex
+   children of .nav; the [hidden] rule must win over it. */
+.nav-group {
+  display: contents;
+}
+.nav-group[hidden] {
+  display: none;
+}
+.brand {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.brand span {
+  color: var(--accent);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 12px;
+}
+.nav-link {
+  color: var(--muted-2);
+  transition: color 0.15s ease-out;
+}
+.nav-link:hover {
+  color: var(--accent);
+}
+.nav-cv {
+  display: none;
+  align-items: center;
+  color: var(--accent);
+}
+
+/* -------------------------------------------------------------------- */
+/* Hero                                                                  */
+/* -------------------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 48px;
+  padding: 76px 0 68px;
+  align-items: start;
+}
+.hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted-2);
+}
+.hero h1 {
+  margin: 22px 0 0;
+  font-size: 46px;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.hero h1 .accent {
+  color: var(--accent);
+}
+.caret {
+  color: var(--accent);
+  animation: dvcaret 1.15s steps(1) infinite;
+}
+@keyframes dvcaret {
+  50% {
+    opacity: 0;
+  }
+}
+.hero-lead {
+  margin: 26px 0 0;
+  max-width: 54ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+/* Second lead paragraph — the LLM-tooling half of the offer — sits tighter. */
+.hero-lead + .hero-lead {
+  margin-top: 16px;
+}
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.hero-note {
+  margin: 30px 0 0;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--muted-2);
+  max-width: 50ch;
+}
+.hero-note .emoji {
+  font-size: 14px;
+}
+.hero-note .lede {
+  color: var(--ink-soft);
+}
+
+/* Manifest panel ------------------------------------------------------ */
+.manifest {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  overflow: hidden;
+}
+.manifest-title {
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--muted-2);
+}
+.manifest-list {
+  padding: 8px 20px 16px;
+}
+.manifest-row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line-subtle);
+  font-size: 12.5px;
+  align-items: baseline;
+}
+.manifest-row dt {
+  color: var(--muted-2);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+}
+.manifest-row dd {
+  color: var(--ink-body);
+  line-height: 1.5;
+}
+.verify {
+  padding: 15px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--sunken);
+}
+.verify-label {
+  margin: 0 0 11px;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--muted-2);
+}
+.verify-list {
+  display: flex;
+  gap: 8px 20px;
+  font-size: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.verify-list b {
+  color: var(--accent);
+}
+
+/* -------------------------------------------------------------------- */
+/* Delivered for                                                         */
+/* -------------------------------------------------------------------- */
+.delivered {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.delivered-title {
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--muted-2);
+  flex: none;
+}
+.delivered-list {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+}
+.delivered-list .sep {
+  color: var(--muted-3);
+}
+
+/* -------------------------------------------------------------------- */
+/* Section furniture                                                     */
+/* -------------------------------------------------------------------- */
+.sec {
+  padding: 76px 0 0;
+}
+.sec-capabilities {
+  padding-top: 72px;
+}
+.sec-eyebrow {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.sec-title {
+  font-size: 31px;
+  letter-spacing: -0.035em;
+}
+
+/* -------------------------------------------------------------------- */
+/* 01 Capabilities                                                       */
+/* -------------------------------------------------------------------- */
+.cap-list {
+  margin-top: 34px;
+}
+.cap-row {
+  display: grid;
+  grid-template-columns: 52px 1.05fr 1.45fr;
+  gap: 28px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line-subtle);
+  align-items: start;
+}
+.cap-num {
+  font-size: 12px;
+  color: var(--muted-3);
+  font-weight: 700;
+}
+.cap-row h3 {
+  font-size: 20px;
+  letter-spacing: -0.025em;
+}
+.cap-row p {
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--muted-2);
+}
+
+/* -------------------------------------------------------------------- */
+/* 02 AI engineering                                                     */
+/* -------------------------------------------------------------------- */
+.ai-intro {
+  margin: 16px 0 0;
+  max-width: 66ch;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.ai-note {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.ai-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  padding: 26px 24px;
+  transition: border-color 0.15s ease-out;
+}
+.ai-card:hover {
+  border-color: var(--accent-line);
+}
+.ai-num {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.ai-card h3 {
+  margin: 12px 0 10px;
+  font-size: 19px;
+  letter-spacing: -0.025em;
+}
+.ai-card p {
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--muted-2);
+}
+.ai-panel {
+  margin-top: 22px;
+  border: 1px solid var(--accent-line);
+  border-radius: 12px;
+  background: var(--accent-wash);
+  padding: 22px 24px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.ai-panel p {
+  max-width: 62ch;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.ai-panel a {
+  font-size: 13px;
+  font-weight: 700;
+  flex: none;
+}
+
+/* -------------------------------------------------------------------- */
+/* 03 Selected work                                                      */
+/* -------------------------------------------------------------------- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 34px;
+}
+.work-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.15s ease-out;
+}
+.work-card:hover {
+  border-color: var(--accent-line);
+}
+.work-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.work-org {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.work-kind {
+  font-size: 10px;
+  color: var(--muted-3);
+  letter-spacing: 0.08em;
+}
+.work-card h3 {
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.work-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+.work-points {
+  margin: auto 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--line-subtle);
+}
+.work-points li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.work-points .bullet {
+  color: var(--accent);
+}
+.work-stack {
+  margin: 6px 0 0;
+  font-size: 10.5px;
+  color: var(--muted-3);
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+}
+
+/* -------------------------------------------------------------------- */
+/* 04 Receipts                                                           */
+/* -------------------------------------------------------------------- */
+.stats {
+  margin: 32px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+/* dt precedes dd in the DOM; CSS order puts the number on top visually. */
+.stat-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.stat-card dt {
+  order: 2;
+  font-size: 12px;
+  color: var(--ink-body);
+  margin-top: 10px;
+  font-weight: 500;
+}
+.stat-num {
+  order: 1;
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-desc {
+  order: 3;
+  margin: 5px 0 0;
+  font-size: 11px;
+  color: var(--muted-2);
+  line-height: 1.5;
+}
+.stats-note {
+  margin: 18px 0 0;
+  font-size: 11.5px;
+  color: var(--muted-3);
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------------- */
+/* 05 Career, abridged                                                   */
+/* -------------------------------------------------------------------- */
+.cv-panel {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--raised);
+  overflow: hidden;
+}
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+}
+.cv-main {
+  padding: 36px 34px;
+}
+.cv-main h2 {
+  margin: 0 0 22px;
+  font-size: 26px;
+  letter-spacing: -0.035em;
+}
+.career li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+.career-role {
+  font-size: 13px;
+  color: var(--ink-body);
+  font-weight: 500;
+}
+.career-role span {
+  color: var(--muted-3);
+}
+.career-ctx {
+  font-size: 11.5px;
+  color: var(--muted-2);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.cv-note {
+  margin: 18px 0 0;
+  font-size: 12px;
+  color: var(--muted-2);
+  line-height: 1.65;
+  max-width: 46ch;
+}
+.cv-note .glyph {
+  color: var(--accent);
+}
+.cv-aside {
+  background: var(--sunken);
+  border-left: 1px solid var(--line);
+  padding: 36px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.cv-aside h3 {
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+.cv-aside-lead {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--accent);
+  color: var(--surface);
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 0.15s ease-out;
+}
+.cv-btn:hover {
+  background: var(--accent-hover);
+  color: var(--surface);
+}
+.cv-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+  color: var(--muted-3);
+  flex-wrap: wrap;
+}
+
+/* -------------------------------------------------------------------- */
+/* 06 How I work                                                         */
+/* -------------------------------------------------------------------- */
+.steps {
+  margin: 34px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.steps li {
+  border-top: 1px solid var(--line-strong);
+  padding: 18px 14px 0 0;
+}
+.step-num {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.steps h3 {
+  margin: 10px 0 8px;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.steps p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+
+/* -------------------------------------------------------------------- */
+/* 07 The boring questions                                               */
+/* -------------------------------------------------------------------- */
+.faq-title {
+  margin-bottom: 30px;
+}
+.faq {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.faq-item {
+  border-top: 1px solid var(--line-subtle);
+  padding: 18px 0;
+}
+.faq-item dt {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+.faq-item dd {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--muted-2);
+}
+
+/* -------------------------------------------------------------------- */
+/* Contact                                                               */
+/* -------------------------------------------------------------------- */
+.sec-contact {
+  padding: 76px 0 84px;
+}
+.contact {
+  border: 1px solid var(--accent-line);
+  border-radius: 14px;
+  background: var(--accent-wash);
+  padding: 48px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.contact h2 {
+  font-size: 33px;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+.contact-lead {
+  margin: 16px 0 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 48ch;
+}
+.contact-useful {
+  margin-top: 22px;
+  border-top: 1px solid var(--accent-line);
+  padding-top: 16px;
+}
+.contact-useful-label {
+  margin: 0 0 10px;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: var(--muted-2);
+}
+.contact-useful ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.contact-useful li {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.contact-useful .bullet {
+  color: var(--accent);
+}
+.contact-meta {
+  margin: 22px 0 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--muted-2);
+}
+.contact-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: none;
+  min-width: 280px;
+}
+.contact-email {
+  background: var(--accent);
+  color: var(--surface);
+  padding: 17px 24px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+  transition: background-color 0.15s ease-out;
+}
+.contact-email:hover {
+  background: var(--accent-hover);
+  color: var(--surface);
+}
+.contact-linkedin {
+  border: 1px solid var(--line-strong);
+  color: var(--ink-body);
+  padding: 17px 24px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  text-align: center;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+}
+.contact-linkedin:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ==================================================================== */
+/* DEV VIEW                                                              */
+/* ==================================================================== */
+.dhero {
+  padding: 72px 0 0;
+}
+.dhero h1 {
+  margin: 22px 0 0;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+.dhero h1 .accent {
+  color: var(--accent);
+}
+.dhero-lead {
+  margin: 24px 0 0;
+  max-width: 62ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.dhero-sub {
+  margin: 18px 0 0;
+  max-width: 62ch;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted-2);
+}
+
+.sec-dev {
+  padding: 64px 0 0;
+}
+.dev-intro {
+  margin: 14px 0 0;
+  max-width: 64ch;
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--muted-2);
+}
+
+/* 01 — The stack, honestly rated ------------------------------------- */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+.stack-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  padding: 24px 22px;
+}
+.stack-card h3 {
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.stack-sub {
+  margin: 8px 0 16px;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.chips li {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 5px 9px;
+  background: var(--sunken);
+}
+/* "Around me, not mine" — platform tech the work deploys onto but which
+   is explicitly NOT claimed as proficiency. The dashed border and the
+   absent background are the visual tell that these are a different class
+   of claim. Never merge these into the Solid column. */
+.adjacent {
+  margin-top: 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--sunken);
+  padding: 20px 22px;
+}
+.adjacent h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+.adjacent p {
+  margin: 0 0 14px;
+  max-width: 76ch;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--muted-2);
+}
+/* Specificity, not source order, must win this override — otherwise moving
+   this block earlier in the file silently reverts the dashed chips to solid. */
+.chips.chips-adjacent li {
+  font-size: 11.5px;
+  color: var(--muted-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: 5px;
+  padding: 5px 9px;
+  background: none;
+}
+
+/* 02 — Decisions ------------------------------------------------------ */
+.decisions {
+  margin-top: 28px;
+}
+.decision {
+  border-top: 1px solid var(--line-subtle);
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 32px;
+}
+.decision h3 {
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+.decision-verdict {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+.decision-why {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted-2);
+}
+
+/* 03 — How I test ----------------------------------------------------- */
+.testing-panel {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--raised);
+  padding: 34px 32px;
+}
+.testing-panel h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  letter-spacing: -0.035em;
+}
+.testing-lead {
+  max-width: 70ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted-2);
+}
+.testing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.testing-grid > div {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 14px;
+}
+.testing-grid h3 {
+  margin: 0 0 7px;
+  font-size: 13.5px;
+}
+.testing-grid p {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted-2);
+}
+
+/* 04 — Agent tooling -------------------------------------------------- */
+.devai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 28px;
+}
+.devai-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  padding: 24px 22px;
+  transition: border-color 0.15s ease-out;
+}
+.devai-card:hover {
+  border-color: var(--accent-line);
+}
+.devai-card h3 {
+  margin: 0 0 9px;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.devai-card p {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--muted-2);
+}
+.devai-note {
+  margin: 20px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted-2);
+  max-width: 70ch;
+}
+
+/* 05 — Opinions ------------------------------------------------------- */
+.opinions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 32px;
+  margin-top: 26px;
+}
+.opinion {
+  border-top: 1px solid var(--line-subtle);
+  padding: 16px 0;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.grip {
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  border-radius: 4px;
+  padding: 4px 6px;
+  text-align: center;
+  /* A token, not the design's literal #12180A: the print block re-points the
+     tokens to ink-on-paper, and a hardcoded near-black here would print as
+     dark-olive text on a near-black box. Visually identical on screen. */
+  background: var(--sunken);
+}
+.opinion p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* 06 — Something I got wrong ------------------------------------------ */
+.wrong-panel {
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--sunken);
+  padding: 34px 32px;
+}
+.wrong-panel h2 {
+  margin: 0 0 14px;
+  font-size: 26px;
+  letter-spacing: -0.035em;
+}
+.wrong-panel p {
+  max-width: 74ch;
+  font-size: 15px;
+  line-height: 1.68;
+  color: var(--muted);
+}
+.wrong-panel p + p {
+  margin-top: 14px;
+}
+
+/* Dev + recruiter contact panels -------------------------------------- */
+.sec-contact-alt {
+  padding: 64px 0 84px;
+}
+.contact-alt {
+  border: 1px solid var(--accent-line);
+  border-radius: 14px;
+  background: var(--accent-wash);
+  padding: 40px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.contact-alt h2 {
+  font-size: 29px;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+.contact-alt-lead {
+  margin: 14px 0 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 52ch;
+}
+.contact-alt-note {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  color: var(--muted-2);
+  line-height: 1.7;
+  max-width: 52ch;
+}
+.contact-alt .contact-email,
+.contact-alt .contact-linkedin {
+  padding: 16px 24px;
+}
+
+/* ==================================================================== */
+/* RECRUITER VIEW                                                        */
+/* ==================================================================== */
+.rhero {
+  padding: 72px 0 0;
+}
+.rhero h1 {
+  margin: 22px 0 0;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+.rhero h1 .accent {
+  color: var(--accent);
+}
+.rhero-lead {
+  margin: 24px 0 0;
+  max-width: 60ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* Recruiter eyebrows are plain labels, not numbered sections. */
+.r-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.sec-glance {
+  padding: 44px 0 0;
+}
+.sec-r {
+  padding: 52px 0 0;
+}
+.glance {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 40px;
+  margin-top: 18px;
+}
+.glance-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-subtle);
+  align-items: baseline;
+}
+.glance-row dt {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+.glance-row dd {
+  font-size: 13.5px;
+  color: var(--ink-body);
+  line-height: 1.5;
+}
+
+.fit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.fit-yes {
+  border: 1px solid var(--accent-line);
+  border-radius: 12px;
+  background: var(--accent-wash);
+  padding: 26px 24px;
+}
+.fit-no {
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--sunken);
+  padding: 26px 24px;
+}
+.fit-yes h2,
+.fit-no h2 {
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+}
+.fit-yes h2 {
+  color: var(--accent);
+}
+.fit-no h2 {
+  color: var(--muted-2);
+}
+.fit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.fit-yes .fit-list li {
+  font-size: 14px;
+  color: var(--ink-body);
+}
+.fit-no .fit-list li {
+  font-size: 14px;
+  color: var(--muted-2);
+}
+.fit-yes .bullet {
+  color: var(--accent);
+}
+.fit-no .bullet {
+  color: var(--muted-3);
+}
+
+/* Scoping note under NUMBERS FOR YOUR SUBMISSION NOTE — stops a recruiter
+   quoting the four figures as general practice rather than as results from
+   one named engagement. */
+.rnum-note {
+  margin: 6px 0 18px;
+  font-size: 12.5px;
+  color: var(--muted-2);
+  line-height: 1.6;
+  max-width: 74ch;
+}
+.rnum-note + .stats {
+  margin-top: 0;
+}
+
+.kw-note {
+  margin: 0 0 20px;
+  font-size: 12.5px;
+  color: var(--muted-2);
+  line-height: 1.6;
+  max-width: 70ch;
+}
+.kw-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--raised);
+  padding: 6px 24px 18px;
+}
+.kw-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-subtle);
+  align-items: baseline;
+}
+.kw-row dt {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+.kw-row dd {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.company-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.company-chips li {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 9px 15px;
+  background: var(--raised);
+}
+.company-note {
+  margin: 16px 0 0;
+  font-size: 12px;
+  color: var(--muted-3);
+  line-height: 1.65;
+  max-width: 74ch;
+}
+
+/* -------------------------------------------------------------------- */
+/* Footer                                                                */
+/* -------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--sunken);
+}
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: var(--muted-3);
+  line-height: 1.7;
+}
+/* The only link that sits inside a run of text. Colour alone would fail
+   WCAG 1.4.1 (Use of Color), so it carries an underline as well. */
+.footer-inner a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------- */
+/* Breakpoints                                                           */
+/* -------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hero,
+  .work-grid,
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats,
+  .steps,
+  .testing-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ai-grid,
+  .devai-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stack-grid,
+  .fit-grid {
+    grid-template-columns: 1fr;
+  }
+  .cv-aside {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 760px) {
+  .cap-row,
+  .decision {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .ai-grid,
+  .devai-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq {
+    grid-template-columns: 1fr;
+  }
+  .glance,
+  .stack-grid,
+  .opinions {
+    grid-template-columns: 1fr;
+  }
+  /* Measured: the two-row header is 92px above 760px but 123-136px below it,
+     as the switcher row wraps. A fixed 112px offset would drop anchor targets
+     and tab-focused controls behind the sticky header (WCAG 2.2 SC 2.4.11). */
+  html {
+    scroll-padding-top: 152px;
+  }
+  [id] {
+    scroll-margin-top: 152px;
+  }
+  .nav {
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav a {
+    font-size: 11px;
+  }
+  .hero h1 {
+    font-size: 33px;
+  }
+  /* Only the 31px section headings scale. MANIFEST, DELIVERED FOR, the CV
+     panel and the contact headline keep their own sizes — the prototype's
+     blanket `h2{font-size:24px!important}` was an artefact of overriding
+     inline styles, not intent (see the handoff README typography table). */
+  /* The prototype's blanket `h2{font-size:24px!important}` at this breakpoint
+     was an artefact of needing !important to beat its own inline styles — it
+     would also have blown up the 11px MANIFEST and 10.5px label headings.
+     Applied here to every h2 that is genuinely larger than 24px, and to none
+     of the small label headings. */
+  .sec-title,
+  .contact h2,
+  .contact-alt h2,
+  .cv-main h2,
+  .testing-panel h2,
+  .wrong-panel h2 {
+    font-size: 24px;
+  }
+  /* Recruiter keyword rows reuse the prototype's [data-g=cap] hook, which
+     collapses here — a 150px term column on a 360px viewport does not fit. */
+  .kw-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav-link {
+    display: none;
+  }
+  .nav-cv {
+    display: inline-flex;
+  }
+  .stats,
+  .steps,
+  .testing-grid {
+    grid-template-columns: 1fr;
+  }
+  /* The switcher aside wraps to three lines here, pushing the sticky header
+     to 183px — 23% of a 320x800 viewport, permanently. The label and the
+     three buttons carry the function on their own; the explanatory sentence
+     is supplementary, so it goes rather than the header eating the screen. */
+  .vsw-aside {
+    display: none;
+  }
+  .wrap,
+  .header-inner,
+  .vsw-row,
+  .footer-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .contact,
+  .contact-alt {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .contact-cta {
+    min-width: 0;
+    width: 100%;
+  }
+  /* The design pins this link with flex:none so it stays on one line beside
+     the paragraph. Below ~560px its max-content width exceeds the viewport
+     and forces horizontal scroll, so let it shrink and wrap down here. */
+  .ai-panel a {
+    flex: 0 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+/* Print                                                                 */
+/* -------------------------------------------------------------------- */
+/* Browsers suppress background colours when printing unless the reader
+   ticks "Background graphics". Without this block the near-black surface
+   drops out and the light type lands on white paper at 1.1:1 — a blank
+   page. A recruiter saving this to PDF is a realistic path, so invert to
+   ink-on-paper explicitly rather than relying on that checkbox. */
+@media print {
+  :root {
+    --surface: #ffffff;
+    --raised: #ffffff;
+    --sunken: #ffffff;
+    --accent: #3d4a12;
+    --accent-hover: #3d4a12;
+    --accent-line: #9aa77a;
+    --accent-wash: #ffffff;
+    --ink: #000000;
+    --ink-body: #1a1a1a;
+    --ink-soft: #333333;
+    --muted: #3a3a3a;
+    --muted-2: #444444;
+    --muted-3: #555555;
+    --line-strong: #999999;
+    --line: #bbbbbb;
+    --line-subtle: #d5d5d5;
+  }
+
+  /* Chrome-only affordances that waste ink or make no sense on paper. */
+  .skip,
+  .site-header,
+  .nav {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #1a1a1a;
+  }
+
+  /* Expose destinations that a printed page otherwise loses. */
+  main a[href^="http"]::after,
+  main a[href^="mailto:"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10px;
+    color: #555;
+    word-break: break-all;
+  }
+  main a[href^="/cv/"]::after {
+    content: " (mariuszmachuta.com/cv/mariusz-machuta-cv.pdf)";
+    font-size: 10px;
+    color: #555;
+  }
+
+  /* Do not split a card across a page break. */
+  .work-card,
+  .ai-card,
+  .stat-card,
+  .cap-row,
+  .faq-item,
+  .cv-panel,
+  .steps li {
+    break-inside: avoid;
+  }
+  .sec,
+  .sec-contact {
+    break-inside: auto;
+  }
+
+  /* Single column: multi-column grids are unreadable at print widths. */
+  .hero,
+  .work-grid,
+  .cv-grid,
+  .stats,
+  .steps,
+  .ai-grid,
+  .faq,
+  .cap-row {
+    grid-template-columns: 1fr;
+  }
+}

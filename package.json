@@ -1,0 +1,20 @@
+{
+  "name": "devnode-website",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint:html": "html-validate dist/index.html",
+    "icons": "node scripts/gen-icons.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.12.1",
+    "html-validate": "^11.0.0",
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.3",
+    "vite": "^7.0.0"
+  }
+}

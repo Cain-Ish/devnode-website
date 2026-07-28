@@ -1,0 +1,14 @@
+/* Loaded only from inside <noscript> in index.html.
+ *
+ * With JavaScript disabled the audience switcher cannot work, so hide it
+ * rather than leaving three dead buttons on the page. The client view is
+ * complete and fully usable without it — dev and recruiter ship with the
+ * `hidden` attribute already set, so no-JS users get the default view
+ * exactly as intended.
+ *
+ * This is a separate file, not an inline <style>, because the CSP sets
+ * style-src 'self' and would block an inline style element.
+ */
+.vsw-row {
+  display: none;
+}

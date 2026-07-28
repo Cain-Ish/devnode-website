@@ -1,0 +1,1646 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mariusz Machuta — Lead Frontend Developer · Warsaw &amp; remote EU</title>
+    <meta
+      name="description"
+      content="Lead frontend developer in Warsaw, available remotely across the EU. React and TypeScript platforms, design systems, and WCAG accessibility that survives a real audit. B2B contract, no hiring overhead."
+    />
+    <link rel="canonical" href="https://mariuszmachuta.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mariuszmachuta.com/" />
+    <meta property="og:title" content="Mariusz Machuta — Lead Frontend Developer" />
+    <meta
+      property="og:description"
+      content="React and TypeScript platforms, design systems, and accessibility that survives a real audit. Warsaw, remote across the EU."
+    />
+    <meta property="og:image" content="https://mariuszmachuta.com/og/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="&lt;DevNode /&gt; — Mariusz Machuta, Lead Frontend Developer. React platforms that can't afford to break, and accessibility that survives the audit. Warsaw, CET, remote across the EU."
+    />
+    <meta property="og:site_name" content="DevNode — Mariusz Machuta" />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mariusz Machuta — Lead Frontend Developer" />
+    <meta
+      name="twitter:description"
+      content="React and TypeScript platforms, design systems, and accessibility that survives a real audit. Warsaw, remote across the EU."
+    />
+    <meta name="twitter:image" content="https://mariuszmachuta.com/og/og-image.png" />
+
+    <meta name="theme-color" content="#0B0B0F" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="preload" href="/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <noscript><link rel="stylesheet" href="/noscript.css" /></noscript>
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- Schema describes the default (client) view only. The dev and
+         recruiter views are the same facts re-presented, not separate
+         documents, so per-view schema would be duplication. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://mariuszmachuta.com/#person",
+            "name": "Mariusz Machuta",
+            "jobTitle": "Lead Frontend Developer",
+            "url": "https://mariuszmachuta.com/",
+            "email": "mailto:mariusz.machuta@gmail.com",
+            "address": { "@type": "PostalAddress", "addressLocality": "Warsaw", "addressCountry": "PL" },
+            "sameAs": ["https://github.com/Cain-Ish", "https://www.linkedin.com/in/cainish/"],
+            "knowsLanguage": ["en", "pl"],
+            "worksFor": { "@id": "https://mariuszmachuta.com/#business" },
+            "image": "https://mariuszmachuta.com/og/og-image.png",
+            "knowsAbout": [
+              "Web accessibility (WCAG 2.1/2.2)",
+              "European Accessibility Act",
+              "Design systems",
+              "Frontend architecture",
+              "React",
+              "TypeScript",
+              "LLM tooling for engineering teams",
+              "Agent skills and hooks",
+              "Subagent orchestration",
+              "MCP context servers",
+              "Agent evaluation and guardrails",
+              "Engineering automation"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://mariuszmachuta.com/#business",
+            "name": "<DevNode /> Unicorn Division",
+            "legalName": "<DevNode/> Mariusz Machuta",
+            "founder": { "@id": "https://mariuszmachuta.com/#person" },
+            "url": "https://mariuszmachuta.com/",
+            "email": "mailto:mariusz.machuta@gmail.com",
+            "vatID": "PL8222120720",
+            "areaServed": ["Poland", "European Union"],
+            "image": "https://mariuszmachuta.com/og/og-image.png",
+            "address": { "@type": "PostalAddress", "addressLocality": "Warsaw", "addressCountry": "PL" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://mariuszmachuta.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How does contracting work, formally?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "B2B contract with my Polish sole proprietorship, registered in CEIDG. For EU companies, invoicing uses reverse-charge VAT. NDA and IP-transfer clauses are standard practice."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Remote or on-site?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Remote-first from Warsaw on CET, which overlaps comfortably with the whole EU business day. On-site kickoffs and workshops by arrangement."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you join existing teams or work solo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Both, and I have done both. Embedded senior or lead inside your squad, or independent delivery of a scoped workstream with regular demos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you make us EAA / WCAG compliant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Audit first — prioritised findings with severity and effort — then remediation in your codebase alongside your team, and an axe-core gate in CI so it stays fixed. I have built exactly that gate on a shared component library in production; compliance that depends on someone remembering to re-audit is not compliance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What languages do you work in?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "English professionally, Polish natively. Documentation, code review and client communication all in English by default."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you do the AI work without the frontend work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Building agent tooling, subagent workflows, MCP servers and automation is a standalone engagement, and it does not have to be a frontend codebase. What it does need is someone senior enough to judge whether the output is any good, which is the part most AI initiatives skip."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is the AI work hype or real?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Judge it by what it replaces, and by whether anyone measured. If a refactor sweep that would have cost a developer two weeks lands in two days and passes review, that is real. If it produces plausible code nobody can maintain, that is hype — and I will tell you which one you are looking at rather than sell you the second."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why should a frontend lead be the one building your agents?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Because the failure mode is identical to the one I have spent my career on: something that looks right, demos well, and quietly breaks in production. Agent work rewards the same habits — budgets, coverage, instrumentation, review discipline — applied to a system that is far less deterministic than a component tree."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you do live coding sessions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "I would rather talk than perform. A timed exercise measures composure under an audience, not the thing you are actually hiring for — and my work is already open to inspection: this page, the CV, the public repos. I will go as deep as you like on architecture and on decisions I got wrong before I got them right, or take a task home and think about it properly. If a live exercise is non-negotiable, say so early and I will tell you honestly whether to keep looking."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do you communicate day to day?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Async-first and in writing — specs, decision records, pull-request context, recorded demos. I am an introvert by wiring, which in practice buys your team fewer meetings, better documentation, and answers that still make sense six months later."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#top" class="brand">
+          <span aria-hidden="true">&lt;</span>DevNode<span aria-hidden="true"> /&gt;</span>
+        </a>
+        <nav aria-label="Primary" class="nav">
+          <span class="nav-group" data-nav-view="client">
+            <a class="nav-link" href="#capabilities">capabilities</a>
+            <a class="nav-link" href="#ai">AI</a>
+            <a class="nav-link" href="#work">work</a>
+            <a class="nav-link" href="#receipts">receipts</a>
+            <a class="nav-link" href="#working">how I work</a>
+          </span>
+          <span class="nav-group" data-nav-view="dev" hidden>
+            <a class="nav-link" href="#dstack">stack</a>
+            <a class="nav-link" href="#ddecisions">decisions</a>
+            <a class="nav-link" href="#dtesting">testing</a>
+            <a class="nav-link" href="#dagents">agents</a>
+            <a class="nav-link" href="#dopinions">opinions</a>
+          </span>
+          <span class="nav-group" data-nav-view="recruiter" hidden>
+            <a class="nav-link" href="#rglance">at a glance</a>
+            <a class="nav-link" href="#rfit">fit</a>
+            <a class="nav-link" href="#rkeywords">keywords</a>
+            <a class="nav-link" href="#rnumbers">numbers</a>
+          </span>
+          <a class="nav-cv" href="/cv/mariusz-machuta-cv.pdf" target="_blank" rel="noopener">
+            CV <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+      <div class="vsw-row">
+        <span class="vsw-label">READING THIS AS</span>
+        <div
+          role="group"
+          aria-label="Choose the version of this page written for your role"
+          class="vsw-group"
+        >
+          <button type="button" data-vsw="client" data-active="true" aria-pressed="true">a client</button>
+          <button type="button" data-vsw="dev" data-active="false" aria-pressed="false">a developer</button>
+          <button type="button" data-vsw="recruiter" data-active="false" aria-pressed="false">a recruiter</button>
+        </div>
+        <span class="vsw-aside">— same facts, written for how you'll actually read them</span>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div id="top" class="wrap">
+        <!-- ============================================================== -->
+        <!-- VIEW: client (default — renders fully with JavaScript disabled) -->
+        <!-- ============================================================== -->
+        <div data-view="client">
+          <section aria-labelledby="hero-h" class="hero">
+            <div>
+              <p class="hero-eyebrow">
+                <span aria-hidden="true">//</span> LEAD FRONTEND DEVELOPER
+                <span aria-hidden="true">&nbsp;·&nbsp;</span> WARSAW
+                <span aria-hidden="true">&nbsp;·&nbsp;</span> REMOTE ACROSS THE EU
+              </p>
+              <h1 id="hero-h">
+                I've seen this<br />codebase <span class="accent">before</span
+                ><span class="caret" aria-hidden="true">.</span>
+              </h1>
+              <p class="hero-lead prose">
+                I'm Mariusz Machuta. I lead frontend on enterprise products that can't afford to
+                break — React platforms with real-time data, design systems three squads have to
+                agree on, and accessibility with a legal deadline attached.
+              </p>
+              <p class="hero-lead prose">
+                And increasingly the other half of the job: the LLM tooling that makes a team
+                faster at all of it — agent skills, subagent teams, MCP context servers, evals.
+                Built for your codebase and measured like production code, because plausible
+                output is not correct output.
+              </p>
+              <div class="hero-cta">
+                <a class="btn-primary" href="/cv/mariusz-machuta-cv.pdf" target="_blank" rel="noopener">
+                  Read the full CV <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  class="btn-outline"
+                  href="mailto:mariusz.machuta@gmail.com?subject=Frontend%20engagement%20%E2%80%94%20quick%20intro"
+                  >Email me</a
+                >
+                <a
+                  class="link-text"
+                  href="https://www.linkedin.com/in/cainish/"
+                  target="_blank"
+                  rel="noopener"
+                  >or LinkedIn <span aria-hidden="true">↗</span></a
+                >
+              </div>
+              <p class="hero-note">
+                <span class="emoji" aria-hidden="true">🦄</span> &nbsp;<span class="lede"
+                  >Head of Unicorn Division</span
+                >
+                — the rare one who is fluent in component APIs, accessibility trees <em>and</em>
+                the roadmap meeting. It started as a joke. It stuck, because it's the job.
+              </p>
+            </div>
+
+            <div class="manifest">
+              <h2 class="manifest-title">MANIFEST</h2>
+              <dl class="manifest-list">
+                <div class="manifest-row">
+                  <dt>ROLE</dt>
+                  <dd>Lead Frontend Developer</dd>
+                </div>
+                <div class="manifest-row">
+                  <dt>CORE</dt>
+                  <dd>React 18 · TypeScript · design systems · monorepos</dd>
+                </div>
+                <div class="manifest-row">
+                  <dt>SPECIALITY</dt>
+                  <dd>Accessibility (WCAG 2.1/2.2 AA) · legacy rescue</dd>
+                </div>
+                <div class="manifest-row">
+                  <dt>ENGAGEMENT</dt>
+                  <dd>B2B · CEIDG sole proprietorship</dd>
+                </div>
+                <div class="manifest-row">
+                  <dt>TIMEZONE</dt>
+                  <dd>CET (UTC+1) · full EU overlap</dd>
+                </div>
+                <div class="manifest-row">
+                  <dt>COMMS</dt>
+                  <dd>Async-first — I write more than I talk</dd>
+                </div>
+                <div class="manifest-row">
+                  <dt>AI</dt>
+                  <dd>Agent skills · subagent teams · shipped MCP server · evals</dd>
+                </div>
+              </dl>
+              <div class="verify">
+                <p class="verify-label">VERIFY IN DEVTOOLS, 10 SECONDS</p>
+                <ul class="verify-list" role="list">
+                  <li><b>0</b> cookies</li>
+                  <li><b>0</b> trackers</li>
+                  <li>no consent banner</li>
+                  <li>self-hosted fonts</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="delivered-h" class="delivered">
+            <h2 id="delivered-h" class="delivered-title">DELIVERED FOR</h2>
+            <ul class="delivered-list" role="list">
+              <li>CodiLime</li>
+              <li class="sep" aria-hidden="true">/</li>
+              <li>EPAM Systems</li>
+              <li class="sep" aria-hidden="true">/</li>
+              <li>IFX Payments</li>
+              <li class="sep" aria-hidden="true">/</li>
+              <li>Fundacja ePaństwo</li>
+              <li class="sep" aria-hidden="true">/</li>
+              <li>GoldenLine</li>
+              <li class="sep" aria-hidden="true">/</li>
+              <li>Ogilvy Interactive</li>
+            </ul>
+          </section>
+
+          <section id="capabilities" aria-labelledby="cap-h" class="sec sec-capabilities">
+            <p class="sec-eyebrow">01 — CAPABILITIES</p>
+            <h2 id="cap-h" class="sec-title">What I'm brought in to own</h2>
+            <div class="cap-list">
+              <article class="cap-row">
+                <span class="cap-num" aria-hidden="true">01</span>
+                <h3>Frontend leadership</h3>
+                <p class="prose">
+                  Leading frontend and QA teams, acting as the direct line to a client-side dev
+                  lead abroad, and making the architecture calls nobody else wants to own.
+                  Certified in management foundations, not just self-appointed.
+                </p>
+              </article>
+              <article class="cap-row">
+                <span class="cap-num" aria-hidden="true">02</span>
+                <h3>Design systems &amp; shared libraries</h3>
+                <p class="prose">
+                  Storybook-driven component libraries consumed across a whole workspace, plus the
+                  boilerplate that makes new apps start on solid rails — stack conventions, testing
+                  and CI wiring baked in.
+                </p>
+              </article>
+              <article class="cap-row">
+                <span class="cap-num" aria-hidden="true">03</span>
+                <h3>Accessibility engineering</h3>
+                <p class="prose">
+                  WCAG AA championed on a live enterprise product, validated by hand and enforced
+                  by an axe-core gate I built into CI — so regressions fail the build instead of
+                  surfacing in an audit a year later. The European Accessibility Act is in force,
+                  so for EU-facing products this is now law rather than polish.
+                </p>
+              </article>
+              <article class="cap-row">
+                <span class="cap-num" aria-hidden="true">04</span>
+                <h3>Modernisation without the rewrite</h3>
+                <p class="prose">
+                  TypeScript upgrades, Vite migrations, state-management moves and bundle budgets,
+                  delivered incrementally on a product that has to keep shipping the whole time.
+                </p>
+              </article>
+              <article class="cap-row">
+                <span class="cap-num" aria-hidden="true">05</span>
+                <h3>LLM tooling for engineering teams</h3>
+                <p class="prose">
+                  Agent skills, subagent teams, MCP servers and automation, tailored to your
+                  codebase and your conventions. This is a service line in its own right — the
+                  section below covers what it actually involves.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section id="ai" aria-labelledby="ai-h" class="sec">
+            <p class="sec-eyebrow">02 — AI ENGINEERING</p>
+            <h2 id="ai-h" class="sec-title">Agents that survive contact with a real codebase.</h2>
+            <p class="ai-intro prose">
+              The model is the easy part. The engineering is orchestration, evaluation, guardrails
+              and staying reliable on the thousandth run — which is why most AI initiatives stall
+              at an impressive demo. I build the harness: tailored to how your team already works,
+              measured like production code.
+            </p>
+            <p class="ai-note">
+              Used daily inside a four-year enterprise engagement — not in notebooks.
+            </p>
+            <div class="ai-grid">
+              <article class="ai-card">
+                <span class="ai-num" aria-hidden="true">/01</span>
+                <h3>Agent skills &amp; hooks</h3>
+                <p class="prose">
+                  Your conventions, review standards and architecture decisions written into the
+                  agent, so it produces code that looks like your codebase instead of generic
+                  output. Hooks enforce the rules the model would otherwise forget by the third
+                  file.
+                </p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-num" aria-hidden="true">/02</span>
+                <h3>Teams of subagents</h3>
+                <p class="prose">
+                  Work split across specialised agents with defined scopes and handoffs, rather
+                  than one prompt attempting everything and quietly failing at half of it. Every
+                  stage reviewable on its own terms, so a failure traces to a step instead of to
+                  "the AI".
+                </p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-num" aria-hidden="true">/03</span>
+                <h3>Context engineering</h3>
+                <p class="prose">
+                  Prompting is instructions; context engineering is the whole information
+                  environment the model works inside. I have built and shipped an MCP server that
+                  exposes a design system to agents, so generated UI reaches for the real component
+                  library instead of inventing a fourth button — context fetched at run time, never
+                  pasted and stale.
+                </p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-num" aria-hidden="true">/04</span>
+                <h3>Evals &amp; guardrails</h3>
+                <p class="prose">
+                  The part most AI programmes skip. Plausible output is not correct output, so
+                  agent behaviour gets measured the way any other code path is. Same instinct that
+                  put a 250 KB bundle budget and 90% hook coverage on my frontend work, applied to
+                  something far less deterministic.
+                </p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-num" aria-hidden="true">/05</span>
+                <h3>Designing for the failure</h3>
+                <p class="prose">
+                  Anyone can demo the happy path. The engineering is what happens when an agent
+                  stalls mid-task, loops, or does the wrong thing confidently at 3am —
+                  instrumentation, stop conditions, and a human in the loop at the point it
+                  actually matters.
+                </p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-num" aria-hidden="true">/06</span>
+                <h3>Automation that earns its keep</h3>
+                <p class="prose">
+                  Refactor passes, test generation, migration sweeps, codebase archaeology. Too
+                  large to do by hand, too mechanical to be worth a human afternoon — handed to
+                  tooling, with a senior on the diff. If it does not beat doing it manually, I
+                  will say so.
+                </p>
+              </article>
+            </div>
+            <div class="ai-panel">
+              <p class="prose">
+                Claude and Gemini, with routing and failover where it earns its cost —
+                model-agnostic by design, because the harness outlives the vendor. And I do the
+                unglamorous part: telling you which of this month's releases is production-ready
+                and which is demo-ware.
+              </p>
+              <a href="https://github.com/Cain-Ish" target="_blank" rel="noopener">
+                Built in public — github.com/Cain-Ish <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </section>
+
+          <section id="work" aria-labelledby="work-h" class="sec">
+            <p class="sec-eyebrow">03 — SELECTED WORK</p>
+            <h2 id="work-h" class="sec-title">Three engagements, honestly described</h2>
+            <div class="work-grid">
+              <article class="work-card">
+                <div class="work-head">
+                  <span class="work-org">CodiLime</span>
+                  <span class="work-kind">ENTERPRISE SaaS</span>
+                </div>
+                <h3>Senior Frontend Developer — platform for a US enterprise-security leader</h3>
+                <p class="work-body prose">
+                  A React SPA suite with real-time job orchestration, streaming logs and JSON
+                  Schema-driven forms over a Python API, built for one of the larger US enterprise
+                  cybersecurity vendors. Several apps plus a shared component library in a
+                  monorepo, shipped in daily contact with the US product and backend teams.
+                </p>
+                <ul class="work-points" role="list">
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Authored the reusable project boilerplate new apps across the platform are
+                      bootstrapped from</span
+                    >
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Built the axe-core accessibility gate in CI for the shared component library
+                      several apps consume, alongside visual regression</span
+                    >
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Built an internal CMS from scratch — schema-driven forms, permissioned
+                      publishing, embedded rich text</span
+                    >
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Held the bundle under a 250 KB gzipped budget through a TypeScript, Vite and
+                      TanStack Query modernisation</span
+                    >
+                  </li>
+                </ul>
+                <p class="work-stack">
+                  React 18 · TypeScript · Vite · TanStack Query · Recoil · Ajv / JSON Schema ·
+                  Tailwind · SASS · CSS Modules · Storybook · Chromatic · axe-core · Vitest ·
+                  Testing Library · Playwright · MSW · pnpm · Nx · Docker · GitLab CI · WebSocket ·
+                  SSE
+                </p>
+              </article>
+
+              <article class="work-card">
+                <div class="work-head">
+                  <span class="work-org">EPAM Systems</span>
+                  <span class="work-kind">LEAD ENGINEER</span>
+                </div>
+                <h3>Leading frontend and QA on a publishing platform</h3>
+                <p class="work-body prose">
+                  Main point of contact with the client dev lead in New York, leading a combined
+                  frontend and QA team building out a product on React and Next.js with a headless
+                  CMS behind it.
+                </p>
+                <ul class="work-points" role="list">
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span>Led the team and owned the client relationship end to end</span>
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Server- and client-side React components, integrated with Arc Publishing
+                      headless CMS</span
+                    >
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Storybook component practice, shared SASS/CSS Modules styles, Jest and Mocha
+                      test coverage</span
+                    >
+                  </li>
+                </ul>
+                <p class="work-stack">
+                  React 16 · Next.js · Redux · ES6 + Babel · SASS · CSS Modules · Storybook ·
+                  Webpack · Node.js · REST · Angular 6/7 (prior role)
+                </p>
+              </article>
+
+              <article class="work-card">
+                <div class="work-head">
+                  <span class="work-org">Fundacja ePaństwo</span>
+                  <span class="work-kind">CIVIC TECH</span>
+                </div>
+                <h3>Senior Front-end Developer — public-interest platforms</h3>
+                <p class="work-body prose">
+                  Frontend and product work on open civic-technology services used by the Polish
+                  public, alongside project management and technology research.
+                </p>
+                <ul class="work-points" role="list">
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span>Core contributor to mojepanstwo.pl, epf.org.pl and kodujdlapolski.pl</span>
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span
+                      >Responsive UI across mobile, tablet and desktop before it was standard
+                      practice</span
+                    >
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span
+                    ><span>Module planning and delivery across cakePHP, Drupal and WordPress stacks</span>
+                  </li>
+                </ul>
+                <p class="work-stack">
+                  JavaScript · jQuery (AJAX/JSON) · HTML5 · CSS3 · PHP · cakePHP · Drupal ·
+                  WordPress · Git Flow
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section id="receipts" aria-labelledby="rec-h" class="sec">
+            <p class="sec-eyebrow">04 — RECEIPTS</p>
+            <h2 id="rec-h" class="sec-title">Numbers I actually held myself to</h2>
+            <dl class="stats">
+              <div class="stat-card">
+                <dt>gzipped bundle budget</dt>
+                <dd class="stat-num">250 KB</dd>
+                <dd class="stat-desc">held through a full platform modernisation</dd>
+              </div>
+              <div class="stat-card">
+                <dt>test coverage</dt>
+                <dd class="stat-num">60% / 90%</dd>
+                <dd class="stat-desc">overall, and on hooks — Vitest + Testing Library</dd>
+              </div>
+              <div class="stat-card">
+                <dt>accessibility gate I built</dt>
+                <dd class="stat-num">axe in CI</dd>
+                <dd class="stat-desc">WCAG AA enforced on the build, not audited after</dd>
+              </div>
+              <div class="stat-card">
+                <dt>single client engagement</dt>
+                <dd class="stat-num">4 years</dd>
+                <dd class="stat-desc">one platform, continuously, without being replaced</dd>
+              </div>
+            </dl>
+            <p class="stats-note">
+              Figures from the CodiLime engagement described above — the numbers I was accountable
+              for, not industry averages.
+            </p>
+          </section>
+
+          <section aria-labelledby="cv-h" class="sec">
+            <div class="cv-panel">
+              <div class="cv-grid">
+                <div class="cv-main">
+                  <p class="sec-eyebrow">05 — CAREER, ABRIDGED</p>
+                  <h2 id="cv-h">The shape of it</h2>
+                  <ol class="career" role="list">
+                    <li>
+                      <div class="career-role">Senior Frontend Developer <span>· CodiLime</span></div>
+                      <div class="career-ctx">
+                        Enterprise platform for a US cybersecurity leader — React, real-time,
+                        monorepo
+                      </div>
+                    </li>
+                    <li>
+                      <div class="career-role">Lead Engineer <span>· EPAM Systems</span></div>
+                      <div class="career-ctx">
+                        Led frontend + QA; direct line to the client dev lead in New York
+                      </div>
+                    </li>
+                    <li>
+                      <div class="career-role">
+                        Senior Software Engineer <span>· EPAM Systems</span>
+                      </div>
+                      <div class="career-ctx">
+                        Angular 6/7 — modules, routing, guards, services, unit testing
+                      </div>
+                    </li>
+                    <li>
+                      <div class="career-role">Front End Web Developer <span>· IFX Payments</span></div>
+                      <div class="career-ctx">
+                        Nuxt/Vue, Angular and React; currency transaction module on Paysafecard API
+                      </div>
+                    </li>
+                    <li>
+                      <div class="career-role">
+                        Senior Front-end Web Developer <span>· Fundacja ePaństwo</span>
+                      </div>
+                      <div class="career-ctx">
+                        Civic tech — mojepanstwo.pl, kodujdlapolski.pl, epf.org.pl
+                      </div>
+                    </li>
+                    <li>
+                      <div class="career-role">Front-end Web Developer <span>· GoldenLine</span></div>
+                      <div class="career-ctx">
+                        Portal development at scale — UX, usability, accessibility, scalability
+                      </div>
+                    </li>
+                  </ol>
+                  <p class="cv-note">
+                    <span class="glyph" aria-hidden="true">⋯</span> &nbsp;Dates, references and the
+                    earlier agency years are all in the CV. I left them off here on purpose — what
+                    I've been trusted with says more than how long I've been at it.
+                  </p>
+                </div>
+                <div class="cv-aside">
+                  <h3>Two pages.<br />No signup. No recruiter wall.</h3>
+                  <p class="cv-aside-lead prose">
+                    Full timeline, every stack, every client, and the education and certifications
+                    underneath it.
+                  </p>
+                  <a class="cv-btn" href="/cv/mariusz-machuta-cv.pdf" target="_blank" rel="noopener">
+                    Open the CV<span aria-hidden="true">↗</span>
+                  </a>
+                  <p class="cv-meta">
+                    <span>PDF</span><span aria-hidden="true">·</span><span>ENGLISH</span
+                    ><span aria-hidden="true">·</span><span>OPENS IN A NEW TAB</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="working" aria-labelledby="working-h" class="sec">
+            <p class="sec-eyebrow">06 — HOW I WORK</p>
+            <h2 id="working-h" class="sec-title">What hiring me actually looks like</h2>
+            <ol class="steps" role="list">
+              <li>
+                <span class="step-num" aria-hidden="true">01</span>
+                <h3>You email me</h3>
+                <p class="prose">
+                  A few lines is enough. I answer in writing, properly, and tell you straight away
+                  if I am not the right person for it.
+                </p>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">02</span>
+                <h3>Scope in writing</h3>
+                <p class="prose">
+                  A short proposal: goals, deliverables, timeline and engagement model. The number
+                  in it is the number on the invoice.
+                </p>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">03</span>
+                <h3>Delivery</h3>
+                <p class="prose">
+                  Sprint rhythm with a working demo, not a status report. Embedded in your squad or
+                  running the workstream solo.
+                </p>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">04</span>
+                <h3>Handoff</h3>
+                <p class="prose">
+                  Documentation and knowledge transfer, so the work survives me leaving. Optional
+                  support retainer after.
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <section aria-labelledby="faq-h" class="sec">
+            <p class="sec-eyebrow">07 — THE BORING QUESTIONS</p>
+            <h2 id="faq-h" class="sec-title faq-title">Answered up front</h2>
+            <dl class="faq">
+              <div class="faq-item">
+                <dt>How does contracting work, formally?</dt>
+                <dd class="prose">
+                  B2B contract with my Polish sole proprietorship, registered in CEIDG. For EU
+                  companies, invoicing uses reverse-charge VAT. NDA and IP-transfer clauses are
+                  standard practice.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Remote or on-site?</dt>
+                <dd class="prose">
+                  Remote-first from Warsaw on CET, which overlaps comfortably with the whole EU
+                  business day. On-site kickoffs and workshops by arrangement.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Do you join existing teams or work solo?</dt>
+                <dd class="prose">
+                  Both, and I have done both. Embedded senior or lead inside your squad, or
+                  independent delivery of a scoped workstream with regular demos.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can you make us EAA / WCAG compliant?</dt>
+                <dd class="prose">
+                  Yes. Audit first — prioritised findings with severity and effort — then
+                  remediation in your codebase alongside your team, and an axe-core gate in CI so
+                  it stays fixed. I have built exactly that gate on a shared component library in
+                  production; compliance that depends on someone remembering to re-audit is not
+                  compliance.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>What languages do you work in?</dt>
+                <dd class="prose">
+                  English professionally, Polish natively. Documentation, code review and client
+                  communication all in English by default.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can you do the AI work without the frontend work?</dt>
+                <dd class="prose">
+                  Yes. Building agent tooling, subagent workflows, MCP servers and automation is a
+                  standalone engagement, and it does not have to be a frontend codebase. What it
+                  does need is someone senior enough to judge whether the output is any good,
+                  which is the part most AI initiatives skip.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is the AI work hype or real?</dt>
+                <dd class="prose">
+                  Judge it by what it replaces, and by whether anyone measured. If a refactor
+                  sweep that would have cost a developer two weeks lands in two days and passes
+                  review, that is real. If it produces plausible code nobody can maintain, that is
+                  hype — and I will tell you which one you are looking at rather than sell you the
+                  second.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why should a frontend lead be the one building your agents?</dt>
+                <dd class="prose">
+                  Because the failure mode is identical to the one I have spent my career on:
+                  something that looks right, demos well, and quietly breaks in production. Agent
+                  work rewards the same habits — budgets, coverage, instrumentation, review
+                  discipline — applied to a system that is far less deterministic than a component
+                  tree.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>Do you do live coding sessions?</dt>
+                <dd class="prose">
+                  I would rather talk than perform. A timed exercise measures composure under an
+                  audience, not the thing you are actually hiring for — and my work is already open
+                  to inspection: this page, the CV, the public repos. I will go as deep as you like
+                  on architecture and on decisions I got wrong before I got them right, or take a
+                  task home and think about it properly. If a live exercise is non-negotiable, say
+                  so early and I will tell you honestly whether to keep looking.
+                </dd>
+              </div>
+              <div class="faq-item">
+                <dt>How do you communicate day to day?</dt>
+                <dd class="prose">
+                  Async-first and in writing — specs, decision records, pull-request context,
+                  recorded demos. I am an introvert by wiring, which in practice buys your team
+                  fewer meetings, better documentation, and answers that still make sense six
+                  months later.
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          <section id="contact" aria-labelledby="contact-h" class="sec-contact">
+            <div class="contact">
+              <div>
+                <h2 id="contact-h">You make the first move.<br />I'll take it from there.</h2>
+                <p class="contact-lead prose">
+                  I don't cold-email, chase, or circle back — so if this looks like a fit, the note
+                  has to come from you. A few lines is plenty. Every one gets a proper written
+                  answer.
+                </p>
+                <div class="contact-useful">
+                  <p class="contact-useful-label">USEFUL IN A FIRST MESSAGE</p>
+                  <ul role="list">
+                    <li>
+                      <span class="bullet" aria-hidden="true">▸</span> &nbsp;What the product is,
+                      and where the frontend hurts
+                    </li>
+                    <li>
+                      <span class="bullet" aria-hidden="true">▸</span> &nbsp;Rough timeline and how
+                      long you need someone
+                    </li>
+                    <li>
+                      <span class="bullet" aria-hidden="true">▸</span> &nbsp;Embedded in your team,
+                      or a workstream of my own
+                    </li>
+                  </ul>
+                </div>
+                <p class="contact-meta">
+                  <span>Warsaw · CET</span><span aria-hidden="true">·</span
+                  ><span>English &amp; Polish</span><span aria-hidden="true">·</span
+                  ><span>B2B invoice, NDA-friendly</span>
+                </p>
+              </div>
+              <div class="contact-cta">
+                <a
+                  class="contact-email"
+                  href="mailto:mariusz.machuta@gmail.com?subject=Frontend%20engagement%20%E2%80%94%20quick%20intro"
+                  >mariusz.machuta@gmail.com</a
+                >
+                <a
+                  class="contact-linkedin"
+                  href="https://www.linkedin.com/in/cainish/"
+                  target="_blank"
+                  rel="noopener"
+                  >Message me on LinkedIn <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW: dev                                                      -->
+        <!-- ============================================================== -->
+        <div data-view="dev" hidden>
+          <section aria-labelledby="dhero-h" class="dhero">
+            <p class="hero-eyebrow">
+              <span aria-hidden="true">//</span> DEVELOPER VIEW — NO HR GIBBERISH, NO SYNERGY, NO
+              “PASSIONATE ABOUT CODE”
+            </p>
+            <h1 id="dhero-h">
+              You're going to be<br />reviewing my <span class="accent">PRs</span>.
+            </h1>
+            <p class="dhero-lead prose">
+              So here's the version without the adjectives. What I'm genuinely deep in, what I'm
+              merely competent at, what I'd need a week to get back into, and the opinions I'll
+              bring to your architecture discussions whether or not you asked.
+            </p>
+            <p class="dhero-sub">Same person as the client view. Fewer nouns like “solution”.</p>
+          </section>
+
+          <section id="dstack" aria-labelledby="stack-h" class="sec-dev">
+            <p class="sec-eyebrow">01 — THE STACK, HONESTLY RATED</p>
+            <h2 id="stack-h" class="sec-title">
+              Three columns, because “proficient in 40 technologies” is a lie
+            </h2>
+            <p class="dev-intro prose">
+              Sorted by what I'd be comfortable being questioned on in a technical screen tomorrow,
+              with no revision.
+            </p>
+            <div class="stack-grid">
+              <div class="stack-card">
+                <h3>Deep</h3>
+                <p class="stack-sub">Ask me anything. No revision needed.</p>
+                <ul class="chips" role="list">
+                  <li>React 18</li>
+                  <li>TypeScript (strict)</li>
+                  <li>JavaScript ES6+</li>
+                  <li>Vite</li>
+                  <li>CSS / SASS</li>
+                  <li>CSS Modules</li>
+                  <li>Tailwind</li>
+                  <li>Storybook</li>
+                  <li>TanStack Query</li>
+                  <li>Recoil</li>
+                  <li>react-hook-form</li>
+                  <li>JSON Schema forms (Ajv / Zod)</li>
+                  <li>Semantic HTML</li>
+                  <li>WCAG 2.1/2.2 AA</li>
+                  <li>ARIA</li>
+                  <li>axe-core</li>
+                  <li>Vitest</li>
+                  <li>Testing Library</li>
+                  <li>MSW</li>
+                  <li>Playwright</li>
+                  <li>pnpm + Nx monorepos</li>
+                  <li>Design systems</li>
+                  <li>Component API design</li>
+                  <li>Git / Git Flow</li>
+                </ul>
+              </div>
+              <div class="stack-card">
+                <h3>Solid</h3>
+                <p class="stack-sub">Shipped production with it. Might check the docs.</p>
+                <ul class="chips" role="list">
+                  <li>Next.js</li>
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>Redux / Redux Toolkit</li>
+                  <li>Jest</li>
+                  <li>Webpack</li>
+                  <li>Chromatic</li>
+                  <li>Docker</li>
+                  <li>GitLab CI</li>
+                  <li>WebSocket</li>
+                  <li>SSE streaming</li>
+                  <li>REST</li>
+                  <li>Angular 6/7</li>
+                  <li>Vue / Nuxt</li>
+                  <li>Arc Publishing</li>
+                  <li>Figma handoff</li>
+                </ul>
+              </div>
+              <div class="stack-card">
+                <h3>Honest about</h3>
+                <p class="stack-sub">Used it, would not claim it cold today.</p>
+                <ul class="chips" role="list">
+                  <li>jQuery (was my top skill once)</li>
+                  <li>PHP / cakePHP</li>
+                  <li>Drupal</li>
+                  <li>WordPress</li>
+                  <li>Python (read fluently, write slowly)</li>
+                  <li>Mocha</li>
+                  <li>Backbone-era patterns</li>
+                </ul>
+              </div>
+            </div>
+            <div class="adjacent">
+              <h3>Around me, not mine</h3>
+              <p>
+                The platform my work is deployed onto. I read these configs, debug through them and
+                open sensible tickets against them, but I don't own them and won't pretend to
+                interview well on them.
+              </p>
+              <ul class="chips chips-adjacent" role="list">
+                <li>Kubernetes / GKE</li>
+                <li>Kustomize</li>
+                <li>ArgoCD</li>
+                <li>Terraform</li>
+                <li>Helm</li>
+                <li>Redis</li>
+                <li>PostgreSQL</li>
+                <li>OIDC / Okta</li>
+                <li>FastAPI</li>
+                <li>Pub/Sub</li>
+                <li>Nx affected graphs</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="ddecisions" aria-labelledby="dec-h" class="sec-dev">
+            <p class="sec-eyebrow">02 — DECISIONS, WITH THE REASONING ATTACHED</p>
+            <h2 id="dec-h" class="sec-title">Calls I've actually had to make</h2>
+            <div class="decisions">
+              <article class="decision">
+                <div>
+                  <h3>Recoil and React Query in the same app — why not just one?</h3>
+                  <p class="decision-verdict">DELIBERATE, NOT ACCIDENTAL</p>
+                </div>
+                <p class="decision-why prose">
+                  Server state and client state have different lifecycles and pretending otherwise
+                  is how you end up hand-rolling cache invalidation. React Query owns anything the
+                  API is the source of truth for; Recoil owns genuinely local UI state. The rule
+                  that matters is that no piece of state lives in both — that is the bug factory,
+                  not the two libraries.
+                </p>
+              </article>
+              <article class="decision">
+                <div>
+                  <h3>Why hold a 250 KB gzipped budget when nobody asked for one?</h3>
+                  <p class="decision-verdict">CI FAILS THE BUILD</p>
+                </div>
+                <p class="decision-why prose">
+                  A budget nobody enforces is a wish. Put it in CI and it becomes a design
+                  constraint: someone has to justify the 40 KB date library in review, which is
+                  exactly the conversation you want happening then rather than in a performance
+                  audit eighteen months later. It also kills the ratchet effect, where every sprint
+                  adds two kilobytes and nobody is ever responsible.
+                </p>
+              </article>
+              <article class="decision">
+                <div>
+                  <h3>JSON Schema-driven forms, or hand-written ones?</h3>
+                  <p class="decision-verdict">SCHEMA — UP TO A POINT</p>
+                </div>
+                <p class="decision-why prose">
+                  When a Python backend already owns the validation rules, duplicating them in
+                  TypeScript means they will drift, and the drift surfaces as a user submitting
+                  something the server rejects for reasons the UI never mentioned. Generate from
+                  schema. The honest caveat: bespoke interaction design fights the generator, so I
+                  keep an explicit escape route for the two or three forms that genuinely need it
+                  instead of bending the abstraction until it screams.
+                </p>
+              </article>
+              <article class="decision">
+                <div>
+                  <h3>Accessibility — audit at the end, or as you go?</h3>
+                  <p class="decision-verdict">AS YOU GO, AND NOT BY PLUGIN</p>
+                </div>
+                <p class="decision-why prose">
+                  Automated tooling catches perhaps a third of real problems, and never the ones
+                  that matter most: focus order that makes no sense, a modal you cannot escape, a
+                  live region that shouts over itself. I build with the keyboard and a screen
+                  reader in the loop, because retrofitting semantics into a finished component tree
+                  costs several times what writing it correctly did.
+                </p>
+              </article>
+              <article class="decision">
+                <div>
+                  <h3>Incremental migration or a clean rewrite?</h3>
+                  <p class="decision-verdict">INCREMENTAL, ALMOST ALWAYS</p>
+                </div>
+                <p class="decision-why prose">
+                  Rewrites ask a business to stop delivering value for a quarter or more on the
+                  promise that the second attempt will be wiser. Sometimes that is genuinely right.
+                  Usually it means re-learning every hard-won edge case the old code encoded, and
+                  the new version ships with a fresh set of bugs plus none of the institutional
+                  memory. I would rather move a codebase in reviewable steps that each ship.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section id="dtesting" aria-labelledby="test-h" class="sec-dev">
+            <div class="testing-panel">
+              <p class="sec-eyebrow">03 — HOW I TEST</p>
+              <h2 id="test-h">Coverage numbers are a smell, but here are mine anyway</h2>
+              <p class="testing-lead prose">
+                60% overall, 90% on hooks, on the platform I spent four years in. The gap is
+                deliberate — hooks are where the logic lives, so that is where the tests earn their
+                maintenance cost. Chasing the last 40% on presentational components buys a green
+                badge and a slower CI.
+              </p>
+              <div class="testing-grid">
+                <div>
+                  <h3>Unit — Vitest</h3>
+                  <p>
+                    Hooks, reducers, formatters, anything with branching logic. Fast enough to run
+                    on save.
+                  </p>
+                </div>
+                <div>
+                  <h3>Component — Testing Library</h3>
+                  <p>
+                    Queried by role and label, so the test breaks when accessibility breaks. That
+                    is a feature.
+                  </p>
+                </div>
+                <div>
+                  <h3>Network — MSW</h3>
+                  <p>
+                    Real request/response shapes instead of mocked modules, which keeps tests
+                    honest when the API changes.
+                  </p>
+                </div>
+                <div>
+                  <h3>E2E — Playwright</h3>
+                  <p>
+                    The handful of flows that actually earn a slow test. Kept small on purpose so
+                    nobody starts ignoring red.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="dagents" aria-labelledby="dai-h" class="sec-dev">
+            <p class="sec-eyebrow">04 — THE AGENT TOOLING, CONCRETELY</p>
+            <h2 id="dai-h" class="sec-title">What I actually run, not what I've read about</h2>
+            <div class="devai-grid">
+              <article class="devai-card">
+                <h3>Claude Code, wired to conventions</h3>
+                <p class="prose">
+                  An in-repo agent layer — skills, hooks and CLAUDE.md docs committed alongside the
+                  code — carrying lint rules, folder structure, naming and review standards, so
+                  output arrives shaped like the codebase instead of like a tutorial. Hooks matter
+                  more than prompts: they enforce what the model drifts away from by the third
+                  file.
+                </p>
+              </article>
+              <article class="devai-card">
+                <h3>An MCP server I actually shipped</h3>
+                <p class="prose">
+                  A component-catalogue MCP server that exposes a design system to agents, so
+                  generated UI reaches for the real library instead of inventing a fourth button.
+                  The agent queries the repo and dependency graph at run time rather than reasoning
+                  about a paste that went stale two commits ago — most “the AI wrote nonsense”
+                  stories are context failures wearing a model costume.
+                </p>
+              </article>
+              <article class="devai-card">
+                <h3>Subagents with narrow scopes</h3>
+                <p class="prose">
+                  One agent per concern with explicit handoffs — migrate, then test, then review —
+                  because a single prompt attempting all three fails silently at the middle one.
+                  Narrow scopes also mean a failure traces to a step you can fix.
+                </p>
+              </article>
+              <article class="devai-card">
+                <h3>Evals, or it is vibes</h3>
+                <p class="prose">
+                  Agent output gets checked against expected outcomes the way any other code path
+                  would be. Without that you cannot tell an improvement from a regression, and “it
+                  felt better this week” is not something I am willing to put my name on.
+                </p>
+              </article>
+            </div>
+            <p class="devai-note">
+              If your team's honest position is “we tried Copilot and it wrote nonsense” — that's a
+              reasonable prior. The difference is almost always context and constraints, not the
+              model. Happy to be specific about it.
+            </p>
+          </section>
+
+          <section id="dopinions" aria-labelledby="argue-h" class="sec-dev">
+            <p class="sec-eyebrow">05 — OPINIONS</p>
+            <h2 id="argue-h" class="sec-title">Things I'll argue about, and how firmly</h2>
+            <p class="dev-intro prose">
+              Better you find out now than in sprint three. Strong ones I'll defend with evidence;
+              loose ones I'll drop the moment your codebase gives me a reason.
+            </p>
+            <div class="opinions">
+              <div class="opinion">
+                <span class="grip">STRONG</span>
+                <p class="prose">
+                  If your component library needs an escape hatch in every component, it is not a
+                  library — it is a tax.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">STRONG</span>
+                <p class="prose">
+                  Accessibility is not a phase. Retrofitted semantics cost several times what
+                  correct markup did.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">STRONG</span>
+                <p class="prose">
+                  A test that asserts implementation details is a maintenance cost pretending to be
+                  a safety net.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">STRONG</span>
+                <p class="prose">
+                  Bundle budgets belong in CI. Anywhere else they are a preference nobody defends
+                  in review.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">MEDIUM</span>
+                <p class="prose">
+                  CSS Modules over CSS-in-JS for anything long-lived — but I will happily work in
+                  whatever your team already agreed on.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">MEDIUM</span>
+                <p class="prose">
+                  Most state management problems are actually data-fetching problems that were
+                  solved in the wrong layer.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">LOOSE</span>
+                <p class="prose">
+                  Monorepos are worth their tooling cost from roughly the third app onward, not
+                  before.
+                </p>
+              </div>
+              <div class="opinion">
+                <span class="grip">LOOSE</span>
+                <p class="prose">
+                  Barrel files cause more circular-import archaeology than the tidy imports are
+                  worth.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="wrong-h" class="sec-dev">
+            <div class="wrong-panel">
+              <p class="sec-eyebrow">06 — THE PART MOST PORTFOLIOS SKIP</p>
+              <h2 id="wrong-h">Two things I got wrong, in my own commit messages</h2>
+              <p class="prose">
+                A test suite on a project template of mine started dying on memory. I raised the
+                per-worker heap to 4 GB and wrote a commit message explaining, with some
+                confidence, that the import graph simply needed more room. Writing the wrong
+                diagnosis down as if it were settled is the part I'd flag in someone else's
+                review.
+              </p>
+              <p class="prose">
+                An hour later I found the actual cause: a mock in one test returned a fresh object
+                literal on every render, which broke the stable-reference contract the data layer
+                depends on, so it re-fired its reset on every render — roughly 19 MB a second until
+                the worker died at 4.5 GB. Hoisting the mock to a module-level constant took that
+                test's peak from 4,543 MB to 365 MB. I reverted my own heap bump in the same commit
+                and called it what it was: a band-aid over a leak. The rule I took from it is that a
+                resource ceiling is almost never the fix — if something needs more memory than it
+                should, the number is the symptom, and I don't touch the limit now until I can name
+                the allocation.
+              </p>
+              <p class="prose">
+                The costlier one was further outside my lane. I had scaffolded a service at two
+                replicas over a single-writer datastore, then “hardened” it by adding a pod
+                disruption budget and writing a paragraph justifying the topology. Five days later
+                I deleted both and called the design architecturally impossible in my own commit
+                message: a single-writer store dictates the deployment topology, and I had reasoned
+                from the deployment inward instead. Caught in review rather than production, and
+                cheap to undo — but it is exactly why the list above separates what I own from what
+                I merely work alongside.
+              </p>
+            </div>
+          </section>
+
+          <section aria-labelledby="dcontact-h" class="sec-contact-alt">
+            <div class="contact-alt">
+              <div>
+                <h2 id="dcontact-h">Want to poke holes in any of that?</h2>
+                <p class="contact-alt-lead prose">
+                  Good. Send the awkward question by email — architecture, a decision above you
+                  disagree with, or the thing your codebase does that you suspect is indefensible.
+                  I answer in writing and I'd rather have the argument before a contract than
+                  after.
+                </p>
+                <p class="contact-alt-note">
+                  Fair warning from the FAQ in the client view: I'll take a take-home or go deep on
+                  architecture, but I don't do timed live-coding auditions.
+                </p>
+              </div>
+              <div class="contact-cta">
+                <a
+                  class="contact-email"
+                  href="mailto:mariusz.machuta@gmail.com?subject=Technical%20question%20%E2%80%94%20from%20your%20dev%20view"
+                  >mariusz.machuta@gmail.com</a
+                >
+                <a
+                  class="contact-linkedin"
+                  href="https://github.com/Cain-Ish"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/Cain-Ish <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  class="contact-linkedin"
+                  href="/cv/mariusz-machuta-cv.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >The CV, if you must <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- VIEW: recruiter                                                -->
+        <!-- ============================================================== -->
+        <div data-view="recruiter" hidden>
+          <section aria-labelledby="rhero-h" class="rhero">
+            <p class="hero-eyebrow">
+              <span aria-hidden="true">//</span> RECRUITER VIEW — BUILT FOR A 30-SECOND SCAN
+            </p>
+            <h1 id="rhero-h">
+              Everything a first screen<br />needs, on <span class="accent">one screen</span>.
+            </h1>
+            <p class="rhero-lead prose">
+              You have a shortlist to cut down and a hiring manager waiting. No scrolling essay —
+              the facts, the keywords, the numbers, and the CV. If I fit the brief you'll know
+              before the kettle boils.
+            </p>
+          </section>
+
+          <section id="rglance" aria-labelledby="glance-h" class="sec-glance">
+            <h2 id="glance-h" class="r-label">AT A GLANCE</h2>
+            <dl class="glance">
+              <div class="glance-row">
+                <dt>NAME</dt>
+                <dd>Mariusz Konrad Machuta</dd>
+              </div>
+              <div class="glance-row">
+                <dt>TARGET TITLE</dt>
+                <dd>Lead / Senior Frontend Developer</dd>
+              </div>
+              <div class="glance-row">
+                <dt>SPECIALISMS</dt>
+                <dd>
+                  React platforms · design systems · WCAG &amp; EAA · LLM agent tooling (shipped
+                  MCP server)
+                </dd>
+              </div>
+              <div class="glance-row">
+                <dt>LOCATION</dt>
+                <dd>Warsaw, Poland · CET (UTC+1)</dd>
+              </div>
+              <div class="glance-row">
+                <dt>WORK MODEL</dt>
+                <dd>Remote-first across the EU · on-site kickoffs by arrangement</dd>
+              </div>
+              <div class="glance-row">
+                <dt>ENGAGEMENT</dt>
+                <dd>B2B contract via registered sole proprietorship (CEIDG)</dd>
+              </div>
+              <div class="glance-row">
+                <dt>NOTICE</dt>
+                <dd>Short — discussed directly, not advertised</dd>
+              </div>
+              <div class="glance-row">
+                <dt>LANGUAGES</dt>
+                <dd>English (professional) · Polish (native)</dd>
+              </div>
+              <div class="glance-row">
+                <dt>RIGHT TO WORK</dt>
+                <dd>Polish citizen — no sponsorship or permit needed in the EU</dd>
+              </div>
+              <div class="glance-row">
+                <dt>INTERVIEWS</dt>
+                <dd>Architecture deep-dives and take-homes yes · timed live-coding no</dd>
+              </div>
+            </dl>
+          </section>
+
+          <!-- Named neutrally: this region holds BOTH the match list and the
+               not-a-fit list, so labelling it from the first heading alone
+               would expose a landmark called "TITLES I MATCH" that is half
+               the opposite. Each list is labelled by its own heading. -->
+          <section id="rfit" aria-label="Role fit" class="sec-r">
+            <div class="fit-grid">
+              <div class="fit-yes">
+                <h2 id="brief-h">TITLES I MATCH</h2>
+                <ul class="fit-list" role="list" aria-labelledby="brief-h">
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span> &nbsp;Lead Frontend Developer
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span> &nbsp;Senior Frontend Developer
+                    / Engineer
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span> &nbsp;Frontend Architect /
+                    Principal Frontend
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span> &nbsp;Design System Engineer
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span> &nbsp;Accessibility Engineer
+                    (WCAG / EAA remediation)
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">▸</span> &nbsp;AI / Agent Tooling
+                    Engineer (frontend-adjacent)
+                  </li>
+                </ul>
+              </div>
+              <div class="fit-no">
+                <h2 id="notfit-h">NOT A FIT — SAVES US BOTH A CALL</h2>
+                <ul class="fit-list" role="list" aria-labelledby="notfit-h">
+                  <li>
+                    <span class="bullet" aria-hidden="true">×</span> &nbsp;Backend-heavy or
+                    full-stack-with-emphasis-on-backend roles
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">×</span> &nbsp;Mobile native (Swift,
+                    Kotlin, React Native at senior depth)
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">×</span> &nbsp;Data engineering, ML
+                    modelling, DevOps ownership
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">×</span> &nbsp;Junior or mid-level
+                    briefs — the rate will not make sense for either side
+                  </li>
+                  <li>
+                    <span class="bullet" aria-hidden="true">×</span> &nbsp;Roles where a timed
+                    live-coding round is mandatory
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="rkeywords" aria-labelledby="kw-h" class="sec-r">
+            <h2 id="kw-h" class="r-label">KEYWORDS, GROUPED — FOR YOUR SEARCH AND YOUR ATS</h2>
+            <p class="kw-note">
+              Written out in full rather than hidden in white text, because that trick is both
+              transparent and insulting.
+            </p>
+            <dl class="kw-panel">
+              <div class="kw-row">
+                <dt>CORE</dt>
+                <dd>
+                  React · React 18 · TypeScript · JavaScript · ES6+ · HTML5 · CSS3 · SASS · SCSS ·
+                  CSS Modules · Tailwind CSS · responsive web design
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>FRAMEWORKS</dt>
+                <dd>
+                  Next.js · Angular · Vue · Nuxt · Node.js · Express · Redux · Redux Toolkit ·
+                  Recoil · React Query · TanStack Query · react-hook-form · Zod · Ajv · SPA · SSR
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>TESTING &amp; QA</dt>
+                <dd>
+                  Vitest · Jest · React Testing Library · Playwright · MSW · Storybook · Chromatic
+                  · visual regression · Mocha · unit testing · E2E testing · test coverage
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>TOOLING</dt>
+                <dd>
+                  Vite · Webpack · Babel · Storybook · pnpm · npm workspaces · Nx · monorepo ·
+                  ESLint · Prettier · Husky · Docker · GitLab CI · CI/CD · Git · Git Flow · code
+                  review
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>PLATFORM (WORKED ALONGSIDE)</dt>
+                <dd>
+                  Kubernetes · GKE · Kustomize · Helm · ArgoCD · GitOps · Terraform · Google Cloud
+                  Platform · GCP · Redis · PostgreSQL · OIDC · Okta · SSO · JWT · REST · WebSocket
+                  · SSE · BFF pattern · microservices
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>ACCESSIBILITY</dt>
+                <dd>
+                  WCAG 2.1 · WCAG 2.2 · WCAG AA · EAA · European Accessibility Act · ARIA · axe ·
+                  axe-core · Lighthouse · screen reader testing · keyboard navigation · semantic
+                  HTML · accessibility audit · accessibility remediation
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>AI &amp; AGENTS</dt>
+                <dd>
+                  Claude · Claude Code · Anthropic · Gemini · LLM · MCP · Model Context Protocol ·
+                  MCP server · AI agents · multi-agent · subagents · agent orchestration · agent
+                  evals · guardrails · context engineering · prompt engineering · AI code review ·
+                  AI automation
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>LEADERSHIP</dt>
+                <dd>
+                  lead frontend developer · tech lead · team lead · frontend architecture ·
+                  mentoring · code review · client-facing · stakeholder management · Agile · Scrum
+                  · design system ownership
+                </dd>
+              </div>
+              <div class="kw-row">
+                <dt>DOMAINS</dt>
+                <dd>
+                  enterprise SaaS · B2B platforms · enterprise cybersecurity · fintech / payments ·
+                  publishing · headless CMS · civic tech · real-time data · developer tooling
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          <section id="rnumbers" aria-labelledby="rnum-h" class="sec-r">
+            <h2 id="rnum-h" class="r-label">NUMBERS FOR YOUR SUBMISSION NOTE</h2>
+            <p class="rnum-note">
+              All four are from the four-year platform engagement described below — figures I was
+              accountable for on that codebase, not general practice. Quote them that way and they
+              will hold up in a technical screen.
+            </p>
+            <dl class="stats">
+              <div class="stat-card">
+                <dt>gzipped bundle budget</dt>
+                <dd class="stat-num">250 KB</dd>
+                <dd class="stat-desc">held through a full platform modernisation</dd>
+              </div>
+              <div class="stat-card">
+                <dt>test coverage</dt>
+                <dd class="stat-num">60% / 90%</dd>
+                <dd class="stat-desc">overall, and on hooks — Vitest + Testing Library</dd>
+              </div>
+              <div class="stat-card">
+                <dt>accessibility gate I built</dt>
+                <dd class="stat-num">axe in CI</dd>
+                <dd class="stat-desc">WCAG AA enforced on the build, not audited after</dd>
+              </div>
+              <div class="stat-card">
+                <dt>single client engagement</dt>
+                <dd class="stat-num">4 years</dd>
+                <dd class="stat-desc">one platform, continuously, without being replaced</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section aria-labelledby="rco-h" class="sec-r">
+            <h2 id="rco-h" class="r-label">NAMES YOUR CLIENT WILL RECOGNISE</h2>
+            <ul class="company-chips" role="list">
+              <li>CodiLime</li>
+              <li>EPAM Systems</li>
+              <li>IFX Payments</li>
+              <li>Fundacja ePaństwo</li>
+              <li>GoldenLine</li>
+              <li>Ogilvy Interactive</li>
+            </ul>
+            <p class="company-note">
+              Dates, tenure and references are in the CV — I keep them off the page deliberately,
+              but you'll have everything you need to submit me in one PDF.
+            </p>
+          </section>
+
+          <section aria-labelledby="rcontact-h" class="sec-contact-alt">
+            <div class="contact-alt">
+              <div>
+                <h2 id="rcontact-h">Take the CV. Send the brief.</h2>
+                <p class="contact-alt-lead prose">
+                  Email is fastest and I answer in writing. Send the actual spec rather than “a
+                  great opportunity” — I'll give you a straight yes or no the same way, and I won't
+                  waste your client's slot if it isn't a fit.
+                </p>
+                <p class="contact-alt-note">
+                  Rates are discussed once the scope is clear, not before. Happy to be submitted to
+                  a named end client with prior notice.
+                </p>
+              </div>
+              <div class="contact-cta">
+                <a
+                  class="contact-email"
+                  href="/cv/mariusz-machuta-cv.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >Download the CV (PDF) <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  class="contact-linkedin"
+                  href="mailto:mariusz.machuta@gmail.com?subject=Role%20%E2%80%94%20%5Bclient%5D%20%5Btitle%5D%20%5Bstart%20date%5D"
+                  >mariusz.machuta@gmail.com</a
+                >
+                <a
+                  class="contact-linkedin"
+                  href="https://www.linkedin.com/in/cainish/"
+                  target="_blank"
+                  rel="noopener"
+                  >LinkedIn <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>
+          &lt;DevNode /&gt; Unicorn Division — registered as &lt;DevNode/&gt; Mariusz Machuta ·
+          CEIDG sole proprietorship · NIP 8222120720 · Warsaw, Poland
+        </p>
+        <p>
+          No cookies. No trackers. Spotted an accessibility issue?
+          <a href="mailto:mariusz.machuta@gmail.com?subject=Accessibility%20issue%20on%20your%20site"
+            >Tell me</a
+          >
+          — I'll fix it.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
