@@ -261,10 +261,14 @@ html {
   gap: 14px;
   flex-wrap: wrap;
 }
+/* The whole recruiter/dev proposition sits behind this control, so it must not
+   be the dimmest thing in the header. Label lifted one step off the floor
+   colour; inactive buttons carry a resting border so the group reads as a
+   segmented control rather than three words of grey text. */
 .vsw-label {
   font-size: 10.5px;
   letter-spacing: 0.1em;
-  color: var(--muted-3);
+  color: var(--muted-2);
   flex: none;
 }
 .vsw-group {
@@ -289,9 +293,10 @@ html {
   letter-spacing: 0.03em;
   color: var(--muted-2);
   padding: 7px 14px;
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
 }
 [data-vsw]:hover {
   color: var(--ink-body);
@@ -299,6 +304,7 @@ html {
 }
 [data-vsw][data-active="true"] {
   background: var(--accent);
+  border-color: var(--accent);
   color: var(--surface);
   font-weight: 700;
 }
