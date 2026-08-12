@@ -1,0 +1,7 @@
+# Security contact for mariuszmachuta.com
+# https://www.rfc-editor.org/rfc/rfc9116
+
+Contact: mailto:mariusz.machuta@gmail.com
+Expires: 2027-08-12T00:00:00.000Z
+Preferred-Languages: en, pl
+Canonical: https://mariuszmachuta.com/.well-known/security.txt
