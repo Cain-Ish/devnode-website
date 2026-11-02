@@ -26,7 +26,9 @@ All three render in the HTML; the two inactive ones carry `hidden`.
 Two constraints hold this together, and both are deliberate:
 
 - **Switching never touches the URL** — no hash, no query parameter, no
-  `pushState`, no reload. It is local UI state.
+  `pushState`, no reload. It is local UI state. The script only reads the URL:
+  a `#section` inside a hidden view opens that view, so reloads and shared links
+  land in the right place.
 - **The `client` view works with JavaScript disabled.** Nothing is gated behind
   a script; with JS off the default view renders complete and the switcher is
   hidden via a stylesheet loaded from `<noscript>`.
@@ -39,9 +41,10 @@ src/main.js           the audience switcher — the only JavaScript
 src/styles/main.css   tokens, components, breakpoints, print
 public/               copied verbatim into dist/
   fonts/              self-hosted woff2 (Inter Variable, JetBrains Mono 400/700)
-  cv/                 the CV PDF — gitignored, see below
+  cv/                 the CV PDF, see below
   noscript.css        hides the switcher when scripting is off
-  .htaccess           canonical redirects, CSP, security headers, caching
+tests/                Playwright checks against the built dist/
+deploy/nginx.conf     reconstructed server config, see Deploy
 scripts/gen-icons.mjs regenerates the favicon set from public/favicon.svg
 ```
 
@@ -52,24 +55,29 @@ npm install
 npm run dev        # dev server
 npm run build      # → dist/
 npm run preview    # serve the production build
+npm test           # browser checks against dist/, run npm run build first
 npm run icons      # regenerate favicons after editing public/favicon.svg
 ```
 
-## The CV is not in this repo
+## The CV is public
 
-`public/cv/mariusz-machuta-cv.pdf` is gitignored — it carries a phone number and
-a full employment history. The page links to `/cv/mariusz-machuta-cv.pdf` from
-five places; **upload the PDF to that path on the host**, or those links 404.
+`public/cv/mariusz-machuta-cv.pdf` is committed to this public repo, and
+`npm run build` copies it into `dist/`. The page links to it from five places.
+It carries a phone number and a full employment history, so treat both as
+public, and remember that older versions stay in git history.
 
-Keep a local copy at `public/cv/` so `npm run build` produces a complete `dist/`.
+The CV panel states the page count ("Five pages."). Keep it in step with the PDF.
 
 ## Verification
 
 Every gate below must pass, **against each of the three views**, before deploy.
+GitHub Actions runs the first three on every push to `main` and on every pull
+request. `npm test` uses the installed Chrome, so it downloads no browser.
 
 ```bash
 npm run build                                  # 0 errors
-npx html-validate dist/index.html              # 0 errors
+npm run lint:html                              # 0 errors
+npm test                                       # switcher, no-JS, links, axe
 npx serve dist -l 4174
 npx lighthouse http://localhost:4174 --preset=desktop --quiet   # ≥95 all
 npx lighthouse http://localhost:4174 --quiet                    # mobile ≥95 all
@@ -79,10 +87,10 @@ npx lighthouse http://localhost:4174 --quiet                    # mobile ≥95 a
 > extensions inject scripts into Vite responses and corrupt the charset and
 > bf-cache audits.
 
-**axe-core:** copy `node_modules/axe-core/axe.min.js` into `dist/`, inject it in
-the console, run `axe.run()` — expect 0 violations in every view. Decorative
-glyphs (`▸ ⋯ / · ×`) report as *incomplete* on colour-contrast because they hold
-no text; that is correct, not a finding. Delete the copy afterwards.
+**axe-core:** `npm test` runs it in every view and fails on any violation.
+Decorative glyphs (`▸ ⋯ / · ×`) report as *incomplete* on colour-contrast because
+they hold no text; that is correct, not a finding. axe cannot see every failure:
+the blink limit (WCAG 2.2.2) has its own test.
 
 **Manual:** keyboard pass (the skip link must be the first focusable element);
 switcher buttons operable with Enter and Space; the URL unchanged after
@@ -136,18 +144,22 @@ deliberately characterising rather than naming, and must stay that way. Do not
 add a company name, internal repository or service name, or any further
 identifying detail — in copy, structured data, comments, or commit messages.
 
-## Deploy (Apache)
+## Deploy (nginx)
 
-1. Upload the **contents** of `dist/` into the docroot.
-2. Upload the CV to `/cv/mariusz-machuta-cv.pdf`.
-3. `.htaccess` sets `DirectoryIndex index.html`, forces HTTPS and non-www,
-   denies PHP, dot-files and backup extensions, collapses `/index.html` onto `/`,
-   and sets CSP plus security headers. There is deliberately **no catch-all
-   redirect** — unknown URLs return a genuine 404 rather than a soft-404 301 to
-   the homepage.
-4. Once HTTPS is confirmed stable, uncomment the HSTS header.
-5. Verify live: `npx lighthouse https://mariuszmachuta.com`, a
-   securityheaders.com scan, and a click-through from a phone.
+The live server is nginx, which does not read `.htaccess`. Its real config lives
+only on the server. `deploy/nginx.conf` is a reconstruction from the old
+`.htaccess` and the live responses, and it has never been run: compare it with
+the server, then replace it with the real file.
+
+1. Upload the **contents** of `dist/` into the docroot, including the
+   `.well-known/` folder, which upload tools can skip because of the dot.
+2. The server forces HTTPS and non-www, denies PHP, dot-files and backup
+   extensions, collapses `/index.html` onto `/`, and sets CSP, HSTS and the other
+   security headers. There is deliberately **no catch-all redirect** — unknown
+   URLs return a genuine 404 rather than a soft-404 301 to the homepage.
+3. Verify live: `/.well-known/security.txt` returns 200,
+   `npx lighthouse https://mariuszmachuta.com`, a securityheaders.com scan, and a
+   click-through from a phone.
 
 **Rollback:** keep the previous `dist/` upload — restoring it is a re-upload.
 There is no application layer to revert.
