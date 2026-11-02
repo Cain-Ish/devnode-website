@@ -8,7 +8,10 @@
  *
  * This is a separate file, not an inline <style>, because the CSP sets
  * style-src 'self' and would block an inline style element.
+ *
+ * The extra `html` is required: the build puts main.css after this file, and
+ * main.css sets `.vsw-row { display: flex }`, so a plain `.vsw-row` loses.
  */
-.vsw-row {
+html .vsw-row {
   display: none;
 }

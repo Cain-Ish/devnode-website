@@ -2,7 +2,8 @@
 //
 // Constraints from the design handoff, all client requirements:
 //   * switching must NOT touch the URL (no hash, no query param, no
-//     pushState, no routing, no reload) — it is local UI state only;
+//     pushState, no routing, no reload) — it is local UI state only. The URL
+//     is read, never written: a #section inside a hidden view opens that view;
 //   * the `client` view must render complete and usable with JS disabled,
 //     so all three views ship in the HTML and `dev`/`recruiter` carry the
 //     `hidden` attribute from the server. This file only ever toggles it.
@@ -68,9 +69,22 @@ function show(view) {
   window.scrollTo(0, 0);
 }
 
+// Menu links put a #section in the URL, but the page always starts in the
+// client view, so a reload or a shared link would point at a hidden section.
+function showViewForHash() {
+  const target = document.getElementById(location.hash.slice(1));
+  const panel = target?.closest('[data-view]');
+  if (panel?.hidden) {
+    show(panel.dataset.view);
+    target.scrollIntoView();
+  }
+}
+
 if (ready) {
   for (const button of buttons) {
     button.setAttribute('aria-pressed', String(button.dataset.active === 'true'));
     button.addEventListener('click', () => show(button.dataset.vsw));
   }
+  window.addEventListener('hashchange', showViewForHash);
+  showViewForHash();
 }

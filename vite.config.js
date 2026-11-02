@@ -1,10 +1,6 @@
 import { defineConfig } from 'vite';
 
+// The page has no modulepreload links, so the polyfill would only add bytes.
 export default defineConfig({
-  base: '/',
-  build: {
-    outDir: 'dist',
-    // Single small entry module; keep asset names hashed for immutable caching.
-    assetsInlineLimit: 2048,
-  },
+  build: { modulePreload: { polyfill: false } },
 });

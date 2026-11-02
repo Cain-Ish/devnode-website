@@ -85,19 +85,13 @@ p,
 ul,
 ol,
 dl,
-dd,
-figure {
+dd {
   margin: 0;
   padding: 0;
 }
 ul,
 ol {
   list-style: none;
-}
-img,
-svg {
-  display: block;
-  max-width: 100%;
 }
 
 /* -------------------------------------------------------------------- */
@@ -135,15 +129,12 @@ a:hover {
 }
 
 /* Sticky header must never obscure a focused element (WCAG 2.2 SC 2.4.11).
-   scroll-padding-top covers EVERY scroll-into-view, including the browser
-   scrolling a newly focused control into view while tabbing — those controls
-   have no id, so [id]{scroll-margin-top} alone would not help them. */
-/* 112px, not 80px — the header is two rows now (logo + audience switcher). */
+   scroll-padding-top covers EVERY scroll-into-view: anchor links, and the
+   browser scrolling a newly focused control into view while tabbing. Do not
+   add scroll-margin-top as well, because the two offsets add up. */
+/* 112px: the header is two rows (logo + audience switcher), 95px tall. */
 html {
   scroll-padding-top: 112px;
-}
-[id] {
-  scroll-margin-top: 112px;
 }
 
 /* Running prose only: lead, capability bodies, work bodies, FAQ answers,
@@ -373,9 +364,11 @@ html {
 .hero h1 .accent {
   color: var(--accent);
 }
+/* Four blinks, 4.6s in all: WCAG 2.2.2 needs a way to stop anything that
+   blinks for more than five seconds, and this page has no pause control. */
 .caret {
   color: var(--accent);
-  animation: dvcaret 1.15s steps(1) infinite;
+  animation: dvcaret 1.15s steps(1) 4;
 }
 @keyframes dvcaret {
   50% {
@@ -1090,11 +1083,8 @@ html {
 /* Specificity, not source order, must win this override — otherwise moving
    this block earlier in the file silently reverts the dashed chips to solid. */
 .chips.chips-adjacent li {
-  font-size: 11.5px;
   color: var(--muted-2);
   border: 1px dashed var(--line-strong);
-  border-radius: 5px;
-  padding: 5px 9px;
   background: none;
 }
 
@@ -1507,6 +1497,12 @@ html {
 /* Breakpoints                                                           */
 /* -------------------------------------------------------------------- */
 @media (max-width: 960px) {
+  /* Measured: the header is 95px tall above 901px but up to 138px below it,
+     as the switcher row wraps. 112px would leave focused controls and anchor
+     targets partly behind the sticky header (WCAG 2.2 SC 2.4.11). */
+  html {
+    scroll-padding-top: 152px;
+  }
   .hero,
   .work-grid,
   .cv-grid {
@@ -1549,15 +1545,6 @@ html {
   .opinions {
     grid-template-columns: 1fr;
   }
-  /* Measured: the two-row header is 92px above 760px but 123-136px below it,
-     as the switcher row wraps. A fixed 112px offset would drop anchor targets
-     and tab-focused controls behind the sticky header (WCAG 2.2 SC 2.4.11). */
-  html {
-    scroll-padding-top: 152px;
-  }
-  [id] {
-    scroll-margin-top: 152px;
-  }
   .nav {
     gap: 14px;
     flex-wrap: wrap;
@@ -1569,10 +1556,6 @@ html {
   .hero h1 {
     font-size: 33px;
   }
-  /* Only the 31px section headings scale. MANIFEST, DELIVERED FOR, the CV
-     panel and the contact headline keep their own sizes — the prototype's
-     blanket `h2{font-size:24px!important}` was an artefact of overriding
-     inline styles, not intent (see the handoff README typography table). */
   /* The prototype's blanket `h2{font-size:24px!important}` at this breakpoint
      was an artefact of needing !important to beat its own inline styles — it
      would also have blown up the 11px MANIFEST and 10.5px label headings.
@@ -1637,6 +1620,17 @@ html {
   }
 }
 
+/* On a phone held sideways the two-row header would cover a third of the
+   screen, so it scrolls away with the page and needs no offset. */
+@media (max-height: 500px) {
+  .site-header {
+    position: static;
+  }
+  html {
+    scroll-padding-top: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1686,13 +1680,29 @@ html {
     color: #1a1a1a;
   }
 
+  /* Filled buttons: backgrounds may not print, and --surface is white here,
+     so their text would otherwise fade out on paper. */
+  .btn-primary,
+  .cv-btn,
+  .contact-email {
+    background: none;
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+  }
+
   /* Expose destinations that a printed page otherwise loses. */
-  main a[href^="http"]::after,
-  main a[href^="mailto:"]::after {
+  main a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 10px;
     color: #555;
     word-break: break-all;
+  }
+  /* The only mailto link that does not show the address as its text. A literal,
+     because attr(href) would print the encoded subject line as well. */
+  main .btn-outline[href^="mailto:"]::after {
+    content: " (mariusz.machuta@gmail.com)";
+    font-size: 10px;
+    color: #555;
   }
   main a[href^="/cv/"]::after {
     content: " (mariuszmachuta.com/cv/mariusz-machuta-cv.pdf)";
@@ -1709,10 +1719,6 @@ html {
   .cv-panel,
   .steps li {
     break-inside: avoid;
-  }
-  .sec,
-  .sec-contact {
-    break-inside: auto;
   }
 
   /* Single column: multi-column grids are unreadable at print widths. */
